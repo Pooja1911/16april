@@ -2,19 +2,24 @@ package com.cg.duplicate;
 
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
+
 public class StringDuplicate {
 	
 	public static void main(String []args)
 	
 	{
-		System.out.println("Enter a String");
-		Scanner scan= new Scanner(System.in);
-		String str=scan.next();
-		char [] array=str.toCharArray();
+		final  Logger LOGGER = Logger.getLogger(StringDuplicate.class.getName());
+		LOGGER.info("Enter a String");
+		final Scanner scan= new Scanner(System.in);
+		 final String str=scan.next();
+		 final char [] array=str.toCharArray();
 		int count=0;
-		for(int i=0;i<str.length()-1;i++)
+		final int length=str.length();
+		for(int i=0;i<length-1;i++)
 		{
-			for(int j=i+1;j<str.length();j++)
+			for(int j=i+1;j<length;j++)
 			{
 				
 		if(array[i]==array[j])
@@ -26,13 +31,13 @@ public class StringDuplicate {
 		
 		if(count>0)
 		{
-			System.out.println("true");
+			LOGGER.info("true");
 		}
 		else
 		{
-			System.out.println("false");
+			LOGGER.info("false");
 		}
-		
+		scan.close();
 	}
 	
 
