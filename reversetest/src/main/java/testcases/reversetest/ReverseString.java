@@ -27,7 +27,7 @@ public class ReverseString {
 		}
 		
 		
-	
+	//method to reverse the string
     static String isReverseString(String string)
     {
     	final String array[] = string.split("");

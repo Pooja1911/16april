@@ -13,7 +13,7 @@ public class PalindromeSort {
 		System.out.println("enter string");
 
 		String[] array = new String[5];
-		Scanner sc = new Scanner(System.in);
+		 final Scanner sc = new Scanner(System.in);
 		for (int i = 0; i < array.length; i++) {
 			array[i] = sc.nextLine();
 
