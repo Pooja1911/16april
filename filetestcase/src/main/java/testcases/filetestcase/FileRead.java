@@ -1,4 +1,4 @@
-package com.cg.filereader;
+package testcases.filetestcase;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,14 +13,14 @@ public class FileRead {
 	{
 		
 		try {
-			final FileReader filereader=new FileReader("./readfile.txt");
+			FileReader filereader=new FileReader("./readfile.txt");
 		  
 			try {
-				int value=0;
+				int s;
 				
-				while(( value=filereader.read())!=-1)
+				while(( s=filereader.read())!=-1)
 				{
-					System.out.println((char)value);//why not logger
+					System.out.println((char)s);
 					
 				}
 				filereader.close();
@@ -39,7 +39,7 @@ public class FileRead {
 	 private static void writefile()
 	 {
 		try {
-			 final FileWriter filewriter=new FileWriter("./readfile.txt");
+			FileWriter filewriter=new FileWriter("./readfile.txt");
 			filewriter.write("Welcome to India");
 			filewriter.close();
 		} catch (IOException e) {
@@ -52,7 +52,7 @@ public class FileRead {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		 final FileRead fileread=new FileRead();
+		FileRead fileread=new FileRead();
 		fileread.readfile();
 		fileread.writefile();
 
