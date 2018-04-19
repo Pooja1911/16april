@@ -7,32 +7,32 @@ import org.junit.Test;
 
 public class PalinTestcase {
 	
-		
+		Palindrome palin=new Palindrome();
 	@Test
 	public void checkfortruecase()
 	{
 		
-		assertEquals(true,Palindrome.isPalindrome("121"));
+		assertEquals(true,palin.isPalindrome("121"));
 	}
 		
 	@Test
 	public void checkforfalsecase()
 	{
 		
-		assertEquals(false,Palindrome.isPalindrome("121-"));
+		assertEquals(false,palin.isPalindrome("121-"));
 	}
 	@Test
 	public void checkforemptycase()
 	{
 	
-		assertEquals(false,Palindrome.isPalindrome(""));
+		assertEquals(false,palin.isPalindrome(""));
 	}
 	
 	@Ignore
 	@Test
-	public void checkfornullcase()
+	public  void checkfornullcase()
 	{
 	
-		assertEquals(false,Palindrome.isPalindrome(null));
+		assertEquals(false,palin.isPalindrome(null));
 	}
 }
