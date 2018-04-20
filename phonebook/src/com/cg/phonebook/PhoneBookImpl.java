@@ -1,6 +1,7 @@
 package com.cg.phonebook;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,6 +15,10 @@ public class PhoneBookImpl implements IPhonrBook{
 		 Person persons=new Person(person.getId(),person.getFirstName(),person.getLastName(),person.getPhoneNumber());
 		 
 		 list.add(persons);
+		if(list.size()>0)
+		{
+			Collections.sort(list, new SortPhone());
+		}
 		return list;
 	}
 

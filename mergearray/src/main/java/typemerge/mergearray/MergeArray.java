@@ -19,26 +19,27 @@ public class MergeArray {
 		for (int value = 0; value < num; value++) {
 			array[value] = scan.nextInt();
 		}
-		 LOGGER.info("Enter the size of array");
+		/* LOGGER.info("Enter the size of array");
 	      final int num1= scan.nextInt();	
 		String[] string = new String[num1];
 		for (int value = 0; value < num1; value++) {
 			string[value] = scan.nextLine();
-		}
+		}*/
      
  
   printarray(array);
-  printarray(string);
+ // printarray(string);
     
      
       
 	}
      
-	private static <E> void printarray(E[] input)
+	 static <E> boolean printarray(E[] input)
 	{
 		for(E array :input)
 		{
 			LOGGER.info("The List is"+array);
 		}
+	return true;
 	}
 }
