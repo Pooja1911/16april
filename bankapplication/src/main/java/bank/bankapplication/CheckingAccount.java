@@ -1,13 +1,20 @@
 package bank.bankapplication;
 
-public  class CheckingAccount implements  Account{
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-	
+/**
+ * @author pooja project name: Bank Application project Description: Checking
+ *         account which have all the methods of interface account
+ *
+ */
+public class CheckingAccount implements Account {
+
 	private float balance;
-	 private InterestRate interestRate;
-	 private Period interestPeriod;
+	private InterestRate interestRate;
+	private Period interestPeriod;
 	// Money money=new Money();
-	 
 
 	/**
 	 * @return the balance
@@ -17,7 +24,8 @@ public  class CheckingAccount implements  Account{
 	}
 
 	/**
-	 * @param balance the balance to set
+	 * @param balance
+	 *            the balance to set
 	 */
 	public void setBalance(float balance) {
 		this.balance = balance;
@@ -31,7 +39,8 @@ public  class CheckingAccount implements  Account{
 	}
 
 	/**
-	 * @param interestRate the interestRate to set
+	 * @param interestRate
+	 *            the interestRate to set
 	 */
 	public void setInterestRate(InterestRate interestRate) {
 		this.interestRate = interestRate;
@@ -45,39 +54,54 @@ public  class CheckingAccount implements  Account{
 	}
 
 	/**
-	 * @param interestPeriod the interestPeriod to set
+	 * @param interestPeriod
+	 *            the interestPeriod to set
 	 */
 	public void setInterestPeriod(Period interestPeriod) {
 		this.interestPeriod = interestPeriod;
 	}
 
-	
-	
-	
+	// to withdraw the amount
 
-	public void withdraw(float amount) {
+	public List withdraw(float amount) {
 		// TODO Auto-generated method stub
-		 
-		 if(balance>0)
-		 {
-			 balance=balance-amount;
-		 }
-		 System.out.println("The balance is"+balance); 
-         	
-		
+
+		if (balance > 0) {
+			balance = balance - amount;
+		}
+		System.out.println("The balance is" + balance);
+		Date date = new Date();
+		System.out.println("The balance is" + balance);
+		List list = new ArrayList();
+		list.add(date);
+		return list;
+
 	}
+
 	public CheckingAccount() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void deposit(float amount) {
+	// to deposit amount and return a date
+	public List deposit(float amount) {
 		// TODO Auto-generated method stub
-		balance=balance+amount;
-		System.out.println("The balance is"+balance);
-		
+		balance = balance + amount;
+		System.out.println("The balance is" + balance);
+		Date date = new Date();
+		System.out.println("The balance is" + balance);
+		List list = new ArrayList();
+		list.add(date);
+		return list;
+
 	}
 
-
-	
+	// return a list of statment done by a particular customer
+	@Override
+	public List<Account> getStatment(List list) {
+		// TODO Auto-generated method stub
+		List list1 = new ArrayList();
+		list1.add(list);
+		return list1;
+	}
 
 }

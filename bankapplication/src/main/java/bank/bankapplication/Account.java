@@ -1,17 +1,17 @@
 package bank.bankapplication;
 
+import java.util.List;
+
 /**
- * @author trainee
+ * @author pooja jain
+ * Project name: Bank application
+ * Project description: created interface account
  *
  *
  */
 public interface Account {
-//	final static  int accountId;
 
-/*static void getAccountId()
-{
-	
-}*/
-public void  withdraw(float amount); //to withdraw the amount
-public void deposit(float amount); // to deposit some amount
+public List  withdraw(float amount); //to withdraw the amount
+public List deposit(float amount); // to deposit some amount
+public List<Account> getStatment(List list);//for getting statement
 }

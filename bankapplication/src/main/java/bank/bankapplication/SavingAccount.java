@@ -1,11 +1,21 @@
 package bank.bankapplication;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * @author pooja
+ * project name: Bank Application
+ * project Description: Savings account aad amount withraw amount and add statments 
+ *
+ */
 public class SavingAccount implements Account{
 	 private float balance=0.0f;
 	 private InterestRate interestRate;
 	 private Period interestPeriod;
 	
-	// Money money=new Money();
+	
 	 
 
 	/**
@@ -56,8 +66,8 @@ public class SavingAccount implements Account{
 		super();
 		this.balance = balance;
 	}
-
-	public void withdraw(float amount)
+// to withdraw the amount
+	public List withdraw(float amount)
 	{
 		// TODO Auto-generated method stub
 		 
@@ -66,21 +76,43 @@ public class SavingAccount implements Account{
 			 balance=balance-amount;
 		 }
 		 System.out.println("The balance is"+balance); 
+		 Date date = new Date();
+		 List list=new ArrayList();
+		 list.add(date);
+		 return list;
+		// System.out.println(date);
           	
 		
 	}
 	public SavingAccount() {
 		// TODO Auto-generated constructor stub
 	}
-
-	public void deposit(float amount) {
+// to deposit a particular amount
+	public List deposit(float amount) {
+		
 		// TODO Auto-generated method stub
 		balance=balance+amount;
 		System.out.println("The balance is"+balance);
+		Date date=new Date();
+		List list=new ArrayList();
+		list.add(date);
+		return list;
+		
+		
+		
+		
+	
 		
 	}
+// to retrive the list of statments
+	public List<Account> getStatment(List list) {
+		// TODO Auto-generated method stub
+		List list1=new ArrayList();
+		list1.add(list);
+   return list1;	}
 
 
+  
 
 	
 		

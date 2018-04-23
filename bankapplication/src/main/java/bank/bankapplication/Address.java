@@ -1,7 +1,9 @@
 package bank.bankapplication;
 
 /**
- * @author trainee
+ * @author pooja
+ * project name: Bank application
+ * project description: to store address
  *
  */
 public class Address {
@@ -74,4 +76,24 @@ public class Address {
 	public Address() {
 		// TODO Auto-generated constructor stub
 	}
+
+// parameterised constructor
+	public Address(String street, String houseNumber, String zipCode, String city) {
+		super();
+		this.street = street;
+		this.houseNumber = houseNumber;
+		this.zipCode = zipCode;
+		this.city = city;
+	}
+
+
+	/* 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Address [street=" + street + ", houseNumber=" + houseNumber + ", zipCode=" + zipCode + ", city=" + city
+				+ "]";
+	}
+	
 }
