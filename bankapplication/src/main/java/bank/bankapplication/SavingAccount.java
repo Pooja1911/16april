@@ -4,6 +4,7 @@ public class SavingAccount implements Account{
 	 private float balance=0.0f;
 	 private InterestRate interestRate;
 	 private Period interestPeriod;
+	
 	// Money money=new Money();
 	 
 
@@ -56,7 +57,8 @@ public class SavingAccount implements Account{
 		this.balance = balance;
 	}
 
-	public void withdraw(float amount) {
+	public void withdraw(float amount)
+	{
 		// TODO Auto-generated method stub
 		 
 		 if(balance>0)

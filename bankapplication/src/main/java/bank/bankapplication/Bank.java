@@ -43,7 +43,7 @@ public class Bank {
 	
     List<Customer> customerList;
    
-    
+    List<Account> accountList;
 
 
 }

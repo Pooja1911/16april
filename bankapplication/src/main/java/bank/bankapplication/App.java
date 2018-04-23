@@ -7,7 +7,7 @@ import java.util.Scanner;
 import org.hamcrest.core.IsInstanceOf;
 
 /**
- * Hello world!
+ * 
  *
  */
 public class App 
@@ -24,7 +24,7 @@ public class App
         map.put(new Customer("Sushmitha","holla"),"Axis");
         System.out.println(map);
         Account account=null;
-       //  account=new SavingAccount();
+         //account=new SavingAccount();
         SavingAccount savingAccount=new SavingAccount();
         FlexibleSavingAccount flexibleSavingAccount= new FlexibleSavingAccount();
         CheckingAccount checkingAccount=new CheckingAccount();
@@ -36,7 +36,8 @@ public class App
         account.deposit(depositAmount);
         System.out.println("Enter the amount to withdraw");
         float withdrawlAmount=scan.nextFloat();
-        if(savingAccount.getBalance()<500)
+        if(((SavingAccount) account).getBalance()<500)
+        
         {
         	System.out.println("Minimum balance should be 500!!!");
         }
@@ -54,7 +55,8 @@ public class App
         account.deposit(depositAmount);
         System.out.println("Enter the amount to withdraw");
         float withdrawlAmount=scan.nextFloat();
-        if(flexibleSavingAccount.getBalance()<500)
+        if(((FlexibleSavingAccount) account).getBalance()<500)
+            
         {
         	System.out.println("Minimum balance should be 500!!!");
         }
@@ -71,7 +73,8 @@ public class App
         account.deposit(depositAmount);
         System.out.println("Enter the amount to withdraw");
         float withdrawlAmount=scan.nextFloat();
-        if(checkingAccount.getBalance()<500)
+        if(((CheckingAccount) account).getBalance()<500)
+            
         {
         	System.out.println("Minimum balance should be 500!!!");
         }
