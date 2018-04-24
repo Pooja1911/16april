@@ -4,10 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,6 +12,8 @@ public class BankTest {
 	CheckingAccount check=new CheckingAccount();
 	FlexibleSavingAccount flex=new FlexibleSavingAccount();
 	Customer customer=new Customer();
+	Contact contact=new Contact();
+	Address address=new Address("newstreet","112","230121","Dungarpur");
 			
 	@Before
 	public void setup()
@@ -190,7 +188,12 @@ public class BankTest {
 		customer.setLastName("Jain");
 		assertFalse(null,false);
 	}
-	
+	@Test
+	public void trueforcontactcheck()
+	{
+		contact.setAddress(address);
+		assertTrue(contact.getAddress()==address);
+	}
 	
 		
 }
