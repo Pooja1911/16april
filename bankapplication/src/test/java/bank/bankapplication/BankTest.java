@@ -195,5 +195,11 @@ public class BankTest {
 		assertTrue(contact.getAddress()==address);
 	}
 	
-		
+	@Test
+	public void falsetestcaseforaddress()
+	{
+		contact.setAddress(null);
+		assertFalse(contact.getAddress()==address);
+	}
+	
 }

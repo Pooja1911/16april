@@ -3,6 +3,7 @@ package bank.bankapplication;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * @author pooja
@@ -11,6 +12,7 @@ import java.util.List;
  *
  */
 public class SavingAccount implements Account{
+	final static Logger LOGGER = Logger.getLogger(App.class.getName());
 	 private float balance=0.0f;
 	 private InterestRate interestRate;
 	 private Period interestPeriod;
@@ -75,7 +77,7 @@ public class SavingAccount implements Account{
 		 {
 			 balance=balance-amount;
 		 }
-		 System.out.println("The balance is"+balance); 
+		// System.out.println("The balance is"+balance); 
 		 Date date = new Date();
 		 List list=new ArrayList();
 		 list.add(date);
@@ -92,12 +94,12 @@ public class SavingAccount implements Account{
 		List list=new ArrayList();
 		if(amount<0)
 		{
-			System.out.println("Enter valid amount");
+			LOGGER.info("Enter valid amount");
 		}else
 		{
 		// TODO Auto-generated method stub
 		balance=balance+amount;
-		System.out.println("The balance is"+balance);
+		//System.out.println("The balance is"+balance);
 		Date date=new Date();
 	
 		list.add(date);
