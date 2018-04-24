@@ -109,7 +109,9 @@ public class Customer extends Contact {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
-
+public Customer() {
+	// TODO Auto-generated constructor stub
+}
 	/*
 	 * @see java.lang.Object#toString()
 	 */

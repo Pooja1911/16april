@@ -2,6 +2,7 @@ package bank.bankapplication;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class BankTest {
 	SavingAccount account=new SavingAccount();
 	CheckingAccount check=new CheckingAccount();
 	FlexibleSavingAccount flex=new FlexibleSavingAccount();
+	Customer customer=new Customer();
 			
 	@Before
 	public void setup()
@@ -163,4 +165,32 @@ public class BankTest {
 		flex.deposit(0);
 		assertTrue(flex.getBalance()==2000);
 	}
+	@Test
+	public void truecaseforfirstNAme()
+	{
+		customer.setFirstName("Pooja");
+		assertEquals("Pooja", "Pooja");
+	}
+	@Test
+	public void falsecaseforfirstName()
+	{
+		customer.setFirstName("Pooja");
+		assertNotEquals(null,"Pooja");
+	}
+	
+	@Test
+	public void truecaseforLastName()
+	{
+		customer.setLastName("Jain");
+		assertEquals("Jain", "Jain");
+	}
+	@Test
+	public void falsecaseforlastName()
+	{
+		customer.setLastName("Jain");
+		assertFalse(null,false);
+	}
+	
+	
+		
 }
