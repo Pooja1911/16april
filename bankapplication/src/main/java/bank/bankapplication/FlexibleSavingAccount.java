@@ -95,7 +95,7 @@ public class FlexibleSavingAccount implements Account {
 	}
 
 	// to retrive the statement list
-	@Override
+
 	public List<Account> getStatment(List list) {
 		// TODO Auto-generated method stub
 		List list1 = new ArrayList();

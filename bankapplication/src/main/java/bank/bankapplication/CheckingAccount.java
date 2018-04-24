@@ -95,8 +95,7 @@ public class CheckingAccount implements Account {
 
 	}
 
-	// return a list of statment done by a particular customer
-	@Override
+	// return a list of statment done by a particular customer	@Override
 	public List<Account> getStatment(List list) {
 		// TODO Auto-generated method stub
 		List list1 = new ArrayList();

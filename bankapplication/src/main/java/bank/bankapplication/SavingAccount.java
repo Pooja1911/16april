@@ -89,13 +89,19 @@ public class SavingAccount implements Account{
 	}
 // to deposit a particular amount
 	public List deposit(float amount) {
-		
+		List list=new ArrayList();
+		if(amount<0)
+		{
+			System.out.println("Enter valid amount");
+		}else
+		{
 		// TODO Auto-generated method stub
 		balance=balance+amount;
 		System.out.println("The balance is"+balance);
 		Date date=new Date();
-		List list=new ArrayList();
+	
 		list.add(date);
+		}
 		return list;
 		
 		

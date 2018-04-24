@@ -50,14 +50,23 @@ public class App {
 				if (account instanceof SavingAccount) {
 					LOGGER.info("Enter the amount to deposit");
 					float depositAmount = scan.nextFloat();
+					if(depositAmount<0)
+					{
+						LOGGER.info("Please Enter valid amount");
+						break;
+					}else
+					{
 					list=account.deposit(depositAmount);//deposit account
+					
 					List list1 = account.getStatment(list);
 					String content = "deposit";
 					list1.add(content);
 					list1.add(customer.getAccountNumber());
 					list1.add(((SavingAccount) account).getBalance());
 					LOGGER.info("Statement List" + list1);
+					}
 					LOGGER.info("Enter the amount to withdraw");
+					
 					float withdrawlAmount = scan.nextFloat();
 					if (((SavingAccount) account).getBalance() < 500)
 
@@ -66,7 +75,7 @@ public class App {
 					} else {
 						list = account.withdraw(withdrawlAmount);//withrawing method
 						List list2 = account.getStatment(list);
-						content = "withraw";
+						String  content = "withraw";
 						list2.add(content);
 						list2.add(customer.getAccountNumber());
 						list2.add(((SavingAccount) account).getBalance());
@@ -82,12 +91,19 @@ public class App {
 					LOGGER.info("Enter the amount to deposit");
 					float depositAmount = scan.nextFloat();
 					list=account.deposit(depositAmount);//deposit for flexible account
+					if(depositAmount<0)
+					{
+						LOGGER.info("Please Enter valid amount");
+						break;
+					}else
+					{
 					List list1 = account.getStatment(list);
 					String content = "withraw";
 					list1.add(content);
 					list1.add(customer.getAccountNumber());
-					list1.add(((SavingAccount) account).getBalance());
+					list1.add(((FlexibleSavingAccount) account).getBalance());
 					LOGGER.info("List is"+list1);
+					}
 					LOGGER.info("Enter the amount to withdraw");
 					float withdrawlAmount = scan.nextFloat();//withdraw for flexible account
 					if (((FlexibleSavingAccount) account).getBalance() < 500)// check for minimum balance
@@ -97,10 +113,10 @@ public class App {
 					} else {
 						list = account.withdraw(withdrawlAmount);
 						List list2 = account.getStatment(list);
-					    content = "withraw";
+					    String content = "withraw";
 						list2.add(content);
 						list2.add(customer.getAccountNumber());
-						list2.add(((SavingAccount) account).getBalance());
+						list2.add(((FlexibleSavingAccount) account).getBalance());
 						LOGGER.info("List is"+list2);
 				}
 				}
@@ -111,13 +127,20 @@ public class App {
 				{
 					LOGGER.info("Enter the amount to deposit");
 					float depositAmount = scan.nextFloat();
+					if(depositAmount<0)
+					{
+						LOGGER.info("Please Enter valid amount");
+						break;
+					}else
+					{
 					list=account.deposit(depositAmount);
 					List list1 = account.getStatment(list);
 					String content = "withraw";
 					list1.add(content);
 					list1.add(customer.getAccountNumber());
-					list1.add(((SavingAccount) account).getBalance());
+					list1.add(((CheckingAccount) account).getBalance());
 					LOGGER.info("Today's list" + list1);
+					}
 					LOGGER.info("Enter the amount to withdraw");
 					float withdrawlAmount = scan.nextFloat();
 					if (((CheckingAccount) account).getBalance() < 500)// check for minimum balance
@@ -127,10 +150,10 @@ public class App {
 					} else {
 						list = account.withdraw(withdrawlAmount);
 						List list2 = account.getStatment(list);
-						 content = "withraw";
+						 String content = "withraw";
 						list2.add(content);
 						list2.add(customer.getAccountNumber());
-						list2.add(((SavingAccount) account).getBalance());
+						list2.add(((CheckingAccount) account).getBalance());
 						LOGGER.info("Today's list" + list2);
 					}
 				}
