@@ -7,26 +7,28 @@ import java.util.List;
 import com.cg.model.SavingAccount;
 
 public class SavingAccountImpl implements IAccountDao {
-
+	SavingAccount savingAccount=new SavingAccount();
+	float balance=savingAccount.getBalance();
 	public List withdraw(float amount) {
 		// TODO Auto-generated method stub
-		SavingAccount savingAccount=new SavingAccount();
-		float balance=savingAccount.getBalance();
-		 
+		
+		
 			 balance=balance-amount; 
 		 Date date = new Date();
 		 List list=new ArrayList();
 		 list.add(date);
 		 list.add("Amount withdraw is"+amount);
+	
 		 return list;
 		
 	}
 
 	public List deposit(float amount) {
 		// TODO Auto-generated method stub
-		SavingAccount savingAccount=new SavingAccount();
-		float balance=savingAccount.getBalance();
+		//SavingAccount savingAccount=new SavingAccount();
+		 balance=savingAccount.getBalance();
 		balance=balance+amount;
+		
 		 Date date = new Date();
 		 List list=new ArrayList();
 		 list.add(date);

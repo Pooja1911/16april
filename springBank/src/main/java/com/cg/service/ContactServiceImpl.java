@@ -7,11 +7,22 @@ import com.cg.repository.ContactDaoImpl;
 import com.cg.repository.IContactDao;
 
 public class ContactServiceImpl implements IContactService  {
- public IContactDao contactDao=new ContactDaoImpl();
+ public IContactDao contactDao;
+ 
+	
+public ContactServiceImpl() {
+	// TODO Auto-generated constructor stub
+}
+	/**
+	 * @param contactDao
+	 */
+	public ContactServiceImpl(IContactDao contactDao) {
+		
+		this.contactDao = contactDao;
+	}
 	public List<Contact> addContact(Contact contact) {
 		// TODO Auto-generated method stub
 		return contactDao.addContact(contact);
 	}
-	
 
 }

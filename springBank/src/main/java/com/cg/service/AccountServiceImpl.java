@@ -10,19 +10,29 @@ import com.cg.repository.IAccountDao;
 import com.cg.repository.SavingAccountImpl;
 
 public class AccountServiceImpl implements IAccountService{
-	//final  Logger LOGGER = Logger.getLogger(AccountServiceImpl.class.getName());
-    public IAccountDao accountDao=new SavingAccountImpl();
+	final  Logger LOGGER = Logger.getLogger(AccountServiceImpl.class.getName());
+    public IAccountDao accountDao;
     SavingAccount savingAccount=new SavingAccount();
     List list=new ArrayList();
+    public AccountServiceImpl() {
+		// TODO Auto-generated constructor stub
+	}
+	/**
+	 * @param accountDao
+	 */
+	public AccountServiceImpl(IAccountDao accountDao) {
+	
+		this.accountDao = accountDao;
+	}
 	public List withdraw(float amount) {
 		
-		if(savingAccount.getBalance()<amount)
+		if(savingAccount.getBalance()>amount)
 		{
-			//LOGGER.info("your balance is less than amount!!!");
+			LOGGER.info("your balance is less than amount!!!");
 		}
 		else if(amount<0)
 		{
-			//LOGGER.info("Negative amount is not possible");
+			LOGGER.info("Negative amount is not possible");
 		}
 		else
 		{
@@ -34,12 +44,12 @@ public class AccountServiceImpl implements IAccountService{
 	}
 
 	public List deposit(float amount) {
-		// TODO Auto-generated method stub
+		//TODO Auto-generated method stub
 
 		
 		if(amount<0)
 		{
-			//LOGGER.info("Negative amount is not possible");
+			LOGGER.info("Negative amount is not possible");
 		}
 		else
 		{

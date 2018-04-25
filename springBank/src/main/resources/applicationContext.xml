@@ -6,7 +6,7 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
  
-  
+  <!--bank instatane creation  -->
     <bean id="bank" class="com.cg.model.Bank">
     <constructor-arg type="java.lang.String" value="Axis"></constructor-arg>
     </bean>
@@ -14,6 +14,8 @@
     <bean id="bankService" class="com.cg.service.BankServiceImpl">
     <constructor-arg index="0" ref="bankDao"></constructor-arg>
     </bean>
+    
+    <!-- customer bean instantiation -->
      <bean id="customer" class="com.cg.model.Customer">
      <constructor-arg index="0" value="Pooja"></constructor-arg>
      <constructor-arg index="1" value="Jain"></constructor-arg></bean>
@@ -21,5 +23,30 @@
     <bean id="customerService" class="com.cg.service.CustomerServiceImpl">
     <constructor-arg index="0" ref="customerDao"></constructor-arg>
     </bean>
-     
+    <!-- Address bean instatiation -->
+     <bean id="address" class="com.cg.model.Address">
+     <constructor-arg index="0" value="new Street"></constructor-arg>
+     <constructor-arg index="1" value="123"></constructor-arg>
+     <constructor-arg index="2" value="23412"></constructor-arg>
+     <constructor-arg index="3" value="Mumbai"></constructor-arg>
+     </bean>
+     <!-- Contact instantation -->
+     <bean id="contact" class="com.cg.model.Contact">
+     <constructor-arg index="0" value="900898976"></constructor-arg>
+     <constructor-arg index="1" value="234543"></constructor-arg>
+     <constructor-arg index="2" value="pooja@gmail.com"></constructor-arg>
+     <constructor-arg index="3" >
+     <ref bean ="address"/>
+     </constructor-arg>
+     </bean>
+      <bean id="contactDao" class="com.cg.repository.ContactDaoImpl"></bean>
+    <bean id="contactService" class="com.cg.service.ContactServiceImpl">
+     <constructor-arg index="0" ref="contactDao"></constructor-arg>
+    </bean>
+    
+    <bean id="savingAccount" class="com.cg.model.SavingAccount"></bean>
+     <bean id="accountDao" class="com.cg.repository.SavingAccountImpl"></bean>
+    <bean id="accountService" class="com.cg.service.AccountServiceImpl">
+     <constructor-arg index="0" ref="accountDao"></constructor-arg>
+    </bean>
     </beans>
