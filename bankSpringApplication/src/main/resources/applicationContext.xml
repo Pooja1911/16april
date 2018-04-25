@@ -14,5 +14,12 @@
     <bean id="bankService" class="com.cg.service.BankServiceImpl">
     <constructor-arg index="0" ref="bankDao"></constructor-arg>
     </bean>
-  
+     <bean id="customer" class="com.cg.model.Customer">
+     <constructor-arg index="0" value="Pooja"></constructor-arg>
+     <constructor-arg index="1" value="Jain"></constructor-arg></bean>
+      <bean id="customerDao" class="com.cg.repository.CustomerDaoImpl"></bean>
+    <bean id="customerService" class="com.cg.service.CustomerServiceImpl">
+    <constructor-arg index="0" ref="customerDao"></constructor-arg>
+    </bean>
+     
     </beans>
