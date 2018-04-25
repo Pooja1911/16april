@@ -5,13 +5,19 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.cg.model.Address;
 import com.cg.model.Bank;
 import com.cg.model.Contact;
 import com.cg.model.Customer;
+import com.cg.model.SavingAccount;
+import com.cg.service.AccountServiceImpl;
 import com.cg.service.BankServiceImpl;
 import com.cg.service.ContactServiceImpl;
 import com.cg.service.CustomerServiceImpl;
+import com.cg.service.IAccountService;
 import com.cg.service.IBankService;
 import com.cg.service.IContactService;
 import com.cg.service.ICustomerService;
@@ -22,17 +28,23 @@ public class BankMain {
 	final static Logger LOGGER = Logger.getLogger(BankMain.class.getName());
 
 	public static void main(String[] args) {
-		//to add a bank
 		Scanner scan=new Scanner(System.in);
-		LOGGER.info("Enter the name of bank");
-		String bankName=scan.next();
-		Bank bank=new Bank(bankName);
+		
+		 ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+		 
+		//to add a bank
+		 Bank bank=ctx.getBean("bank", Bank.class);
+		
+		//LOGGER.info("Enter the name of bank");
+	//	String bankName=scan.next();
+		//Bank bank=new Bank(bankName);
 		List<Bank> banklist=new ArrayList<Bank>();
-		IBankService bankService=new BankServiceImpl();
+		//IBankService bankService=new BankServiceImpl();
+		IBankService bankService=ctx.getBean("bankService",BankServiceImpl.class);
 		banklist=bankService.addBank(bank);
 		
 		
-	// to add customer
+	/*// to add customer
 		LOGGER.info("Enter Details of customer");
 		LOGGER.info("Enter your first name");
 		String firstName=scan.next();
@@ -67,8 +79,17 @@ public class BankMain {
 		IContactService contactService=new ContactServiceImpl();
 		contactlist=contactService.addContact(contact);
 		
+		//saving Account
+		//to deposit an amount
+		SavingAccount sa =new SavingAccount();
+		LOGGER.info("Enter the amount you want to enter");
+		float amount=scan.nextFloat();
+		List<SavingAccount>savinglist=new ArrayList();
+		IAccountService accountService=new AccountServiceImpl();
+		savinglist=accountService.deposit(amount);
 		
-		
+	
+		*/
 		
 	}
 

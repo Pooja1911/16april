@@ -18,8 +18,8 @@
 		 <hibernate.version>4.2.1.Final</hibernate.version> 
 
 		<!-- Logging -->
-		<logback.version>1.0.13</logback.version>
-		<slf4j.version>1.7.5</slf4j.version>
+		<!-- <logback.version>1.0.13</logback.version>
+		<slf4j.version>1.7.5</slf4j.version> -->
 
 		<!-- Test -->
 		<junit.version>4.11</junit.version>
@@ -44,38 +44,28 @@
     <artifactId>spring-context</artifactId>
     <version>4.3.5.RELEASE</version>
 </dependency>
+
 		<!-- Spring and Transactions -->
-		<!-- <dependency>
-			<groupId>org.springframework</groupId> -->
-			<!-- <artifactId>spring-context</artifactId>
+		<dependency>
+			<groupId>org.springframework</groupId> 
+			 <artifactId>spring-context</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>${spring-framework.version}</version>
-		</dependency> -->
+		</dependency> 
 
 		<!-- Logging with SLF4J & LogBack -->
-		<!-- <dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
-			<scope>runtime</scope>
-		</dependency> -->
+	
 
 		<!-- Hibernate -->
-		<!-- <dependency>
+		 <dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
-		</dependency> -->
+		</dependency> 
 
 		
 		<!-- Test Artifacts -->

@@ -113,15 +113,14 @@ public class SavingAccount implements Account{
 		
 	}
 // to retrive the list of statments
-	public List<Account> getStatment(List list) {
+public List<Account> getStatment(List list) {
 		// TODO Auto-generated method stub
 		List list1=new ArrayList();
 		list1.add(list);
-   return list1;	}
-
+   return list1;	
 
   
-
+}
 	
 		
 	}

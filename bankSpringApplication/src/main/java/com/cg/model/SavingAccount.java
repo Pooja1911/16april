@@ -43,5 +43,13 @@ public class SavingAccount {
 	public SavingAccount() {
 		// TODO Auto-generated constructor stub
 	}
+	/**
+	 * @param balance
+	 */
+	public SavingAccount(float balance) {
+		super();
+		this.balance = balance;
+	}
+	
 
 }
