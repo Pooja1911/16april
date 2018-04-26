@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,14 +22,14 @@ public class Testcase {
 	Customer customer=new Customer("Pooja","Jain");
 	Address address=new Address("newStreet","123","23412","Mumbai");
 	Contact contact=new Contact(900121234,324567,"pooja@gmail.com",address);
-	SavingAccount account=new SavingAccount();
+	SavingAccount account=new SavingAccount(1000);
 	IAccountService accountService=new AccountServiceImpl();
 	
 	@Before
 	public void setup() {
 		
 
-		account.setBalance(1000);
+		//account.setBalance(1000);
 	}
 	@Test
 	public void checkbankname()
@@ -74,44 +76,32 @@ public class Testcase {
 	public void bankTestcase()
 	{
 		//account.setBalance(1000);
-		accountService.withdraw(200);
-		assertTrue(account.getBalance()==800);
+		account=accountService.deposit(200,account);
+		
+		assertTrue(account.getBalance()==1200);
 		
 	}
 	
-	/*@Test
-	public void bankfalseTestCase()
+	@Test
+	public void falsedepositcheck()
 	{
-		account.withdraw(2000);
-		assertFalse(account.getBalance()==1000);
+		accountService.deposit(-2000,account);
+		assertFalse(account.getBalance()==100);
 	}
 
 	@Test
-	public void banksavingcheck()
+	public void withdrawcheck()
 	{
-		account.setBalance(400);
-		account.withdraw(300);
-		assertTrue("Minimum balance should be 500!!!",true);
+	
+		account=accountService.withdraw(300,account);
+		assertTrue(account.getBalance()==700);
+	}
+
+	@Test
+	public void withdrawfalsecheck()
+	{
+		accountService.withdraw(2000, account);
+		assertTrue("your balance is less than amount!!!",true);
 	}
 	
-	@Test
-	public void truecasefordepositsaving()
-	{
-		account.deposit(0);
-		assertTrue(account.getBalance()==1000);
-	}
-	@Test
-	public void testfordeposit()
-	{
-		account.deposit(300);
-		assertTrue(account.getBalance()==1300);
-	}
-	
-	@Test
-	public void falsetestfordeposit()
-	{
-		account.deposit(-1300);
-		assertTrue("Please Enter valid amount",true);
-		
-	}*/
 }

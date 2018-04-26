@@ -8,8 +8,9 @@ import com.cg.model.SavingAccount;
 
 public interface IAccountService {
 
-	public List withdraw(float amount);
-	public List deposit(float amount);
-	public List<SavingAccount> getStatment(List list);
+	//public float withdraw(float amount,float bal);
+	public SavingAccount deposit(float amount,SavingAccount save);
+	//public List<SavingAccount> getStatment(List list);
+	public SavingAccount withdraw(float withdrawAmount,SavingAccount save);
 
 }

@@ -6,11 +6,18 @@ import java.util.List;
 import com.cg.model.Bank;
 
 public class BankDaoImpl implements IBankDao{
+	
+	 private List<Bank> list;
 
 	public List<Bank> addBank(Bank bank) {
-		List<Bank> list=new ArrayList();
-	
-		list.add(bank);
+		if(list.isEmpty())
+		{
+		 list=new ArrayList();
+		list.add(bank);}
+		else
+		{
+			list.add(bank);
+		}
 		// TODO Auto-generated method stub
 		return list;
 		

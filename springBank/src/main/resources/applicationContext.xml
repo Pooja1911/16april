@@ -45,8 +45,7 @@
     </bean>
     
     <bean id="savingAccount" class="com.cg.model.SavingAccount"></bean>
-     <bean id="accountDao" class="com.cg.repository.SavingAccountImpl"></bean>
+  
     <bean id="accountService" class="com.cg.service.AccountServiceImpl">
-     <constructor-arg index="0" ref="accountDao"></constructor-arg>
-    </bean>
+     </bean>
     </beans>

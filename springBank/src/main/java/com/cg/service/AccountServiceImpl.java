@@ -1,68 +1,45 @@
 package com.cg.service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
-
 import com.cg.model.SavingAccount;
-import com.cg.repository.IAccountDao;
-import com.cg.repository.SavingAccountImpl;
 
-public class AccountServiceImpl implements IAccountService{
-	final  Logger LOGGER = Logger.getLogger(AccountServiceImpl.class.getName());
-    public IAccountDao accountDao;
-    SavingAccount savingAccount=new SavingAccount();
-    List list=new ArrayList();
-    public AccountServiceImpl() {
-		// TODO Auto-generated constructor stub
-	}
-	/**
-	 * @param accountDao
-	 */
-	public AccountServiceImpl(IAccountDao accountDao) {
-	
-		this.accountDao = accountDao;
-	}
-	public List withdraw(float amount) {
-		
-		if(savingAccount.getBalance()>amount)
-		{
+public class AccountServiceImpl implements IAccountService {
+	final Logger LOGGER = Logger.getLogger(AccountServiceImpl.class.getName());
+
+	SavingAccount savingAccount;
+
+	public SavingAccount withdraw(float amount, SavingAccount save) {
+
+		float balance = save.getBalance();
+		if (balance < amount) {
 			LOGGER.info("your balance is less than amount!!!");
-		}
-		else if(amount<0)
-		{
+
+		} else if (amount < 0) {
 			LOGGER.info("Negative amount is not possible");
+
+		} else {
+
+			balance = balance - amount;
+			save.setBalance(balance);
+
 		}
-		else
-		{
-			
-			list=accountDao.withdraw(amount);
-			
-		}
-		return list;
+
+		return save;
 	}
 
-	public List deposit(float amount) {
-		//TODO Auto-generated method stub
+	public SavingAccount deposit(float amount, SavingAccount save) {
 
-		
-		if(amount<0)
-		{
+		if (amount < 0) {
 			LOGGER.info("Negative amount is not possible");
-		}
-		else
-		{
-			
-			list=accountDao.deposit(amount);
-			
-		}
-		return list;
-	}
 
-	public List<SavingAccount> getStatment(List list) {
-		// TODO Auto-generated method stub
-		return accountDao.getStatment(list);
+		} else {
+			float balance = save.getBalance();
+			balance = balance + amount;
+			save.setBalance(balance);
+
+		}
+		return save;
 	}
 
 }

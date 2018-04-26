@@ -50,6 +50,13 @@ public class SavingAccount {
 		super();
 		this.balance = balance;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "SavingAccount [balance=" + balance + ", interestRate=" + interestRate + ", period=" + period + "]";
+	}
 	
 
 }

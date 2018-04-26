@@ -5,37 +5,43 @@ public class CheckingAccount {
 	private float interestRate;
 	private long period;
 	/**
-	 * @return the balance
+	 * method name: getBalance
+	 * method description : to get the balance of an account
 	 */
 	public float getBalance() {
 		return balance;
 	}
 	/**
-	 * @param balance the balance to set
+	 * method name: setBalance
+	 * method description : to set balance of an account
 	 */
 	public void setBalance(float balance) {
 		this.balance = balance;
 	}
 	/**
-	 * @return the interestRate
+	 * method name: getInterestRate
+	 * method description : to get the interest rate
 	 */
 	public float getInterestRate() {
 		return interestRate;
 	}
 	/**
-	 * @param interestRate the interestRate to set
+	 * method name: setInterestRate(float)
+	 * method description : to set interest rate as per account type
 	 */
 	public void setInterestRate(float interestRate) {
 		this.interestRate = interestRate;
 	}
 	/**
-	 * @return the period
+	 * method name: getPeriod
+	 * method description : to get the period
 	 */
 	public long getPeriod() {
 		return period;
 	}
 	/**
-	 * @param period the period to set
+	 * method name: setPeriod
+	 * method description : to set Period
 	 */
 	public void setPeriod(long period) {
 		this.period = period;

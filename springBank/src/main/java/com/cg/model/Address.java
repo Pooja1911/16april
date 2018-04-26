@@ -1,52 +1,49 @@
 package com.cg.model;
 
 public class Address {
-	 private String street;
-	 private String houseNumber;
-	 private String zipCode;
-	 private String city;
+	private String street;
+	private String houseNumber;
+	private String zipCode;
+	private String city;
+
 	/**
-	 * method name: getStreet
+	 * method name: getStreet 
 	 * method description: to get street value
 	 */
 	public String getStreet() {
 		return street;
 	}
-	
+
 	/**
-	 * @return the houseNumber
+	 * method name: getHouseNumber
+	 *  method description : to get the houseNumber
 	 */
 	public String getHouseNumber() {
 		return houseNumber;
 	}
-	
+
 	/**
-	 * @return the zipCode
+	 * method name: getZipCode 
+	 * method description : to get the zipcode
 	 */
+
 	public String getZipCode() {
 		return zipCode;
 	}
+
 	/**
-	 * @param zipCode the zipCode to set
+	 * method name: getCity 
+	 * method description : to get the city
 	 */
-	
+
 	public String getCity() {
 		return city;
 	}
-	/**
-	 * @param city the city to set
-	 */
-	
+
 	public Address() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param street
-	 * @param houseNumber
-	 * @param zipCode
-	 * @param city
-	 */
 	public Address(String street, String houseNumber, String zipCode, String city) {
 		super();
 		this.street = street;
@@ -54,6 +51,5 @@ public class Address {
 		this.zipCode = zipCode;
 		this.city = city;
 	}
-	
-	
+
 }

@@ -1,16 +1,13 @@
 package com.cg.model;
 
 /**
- * @author Pooja Jain
- * Project Name : bankSpringApplication
- * Project Description: pojo for bank class
+ * Author name: Pooja Jain 
+ * Project Name : SpringBank
+ *  Project Description:  pojo for bank class
  *
  */
 public class Bank {
-	
-	 /* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+
 	@Override
 	public String toString() {
 		return "Bank [name=" + name + "]";
@@ -18,10 +15,14 @@ public class Bank {
 
 	private String name;
 
+	/**
+	 * method name: getName method description : to get the bank name
+	 */
 	public String getName() {
 		return name;
 	}
-	  public Bank() {
+
+	public Bank() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -30,5 +31,4 @@ public class Bank {
 		this.name = name;
 	}
 
-	
 }
