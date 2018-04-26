@@ -26,7 +26,7 @@ public class Bank {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Bank(String name) {
+	public Bank(final String name) {
 		super();
 		this.name = name;
 	}

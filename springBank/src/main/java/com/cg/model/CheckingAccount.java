@@ -15,7 +15,7 @@ public class CheckingAccount {
 	 * method name: setBalance
 	 * method description : to set balance of an account
 	 */
-	public void setBalance(float balance) {
+	public void setBalance(final float balance) {
 		this.balance = balance;
 	}
 	/**
@@ -29,7 +29,7 @@ public class CheckingAccount {
 	 * method name: setInterestRate(float)
 	 * method description : to set interest rate as per account type
 	 */
-	public void setInterestRate(float interestRate) {
+	public void setInterestRate(final float interestRate) {
 		this.interestRate = interestRate;
 	}
 	/**
@@ -43,7 +43,7 @@ public class CheckingAccount {
 	 * method name: setPeriod
 	 * method description : to set Period
 	 */
-	public void setPeriod(long period) {
+	public void setPeriod(final long period) {
 		this.period = period;
 	}
 	public CheckingAccount() {

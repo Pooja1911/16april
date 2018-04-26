@@ -12,7 +12,7 @@ public class BankDaoImpl implements IBankDao{
 	public List<Bank> addBank(Bank bank) {
 		if(list.isEmpty())
 		{
-		 list=new ArrayList();
+		 list=new ArrayList<Bank>();
 		list.add(bank);}
 		else
 		{

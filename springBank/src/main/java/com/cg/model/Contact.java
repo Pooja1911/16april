@@ -21,7 +21,7 @@ public class Contact {
 	/**
 	 * @param mobile the mobile to set
 	 */
-	public void setMobile(long mobile) {
+	public void setMobile(final long mobile) {
 		this.mobile = mobile;
 	}
 	/**
@@ -33,7 +33,7 @@ public class Contact {
 	/**
 	 * @param phone the phone to set
 	 */
-	public void setPhone(long phone) {
+	public void setPhone(final long phone) {
 		this.phone = phone;
 	}
 	/**
@@ -45,7 +45,7 @@ public class Contact {
 	/**
 	 * @param email the email to set
 	 */
-	public void setEmail(String email) {
+	public void setEmail(final String email) {
 		this.email = email;
 	}
 	/**
@@ -57,7 +57,7 @@ public class Contact {
 	/**
 	 * @param address the address to set
 	 */
-	public void setAddress(Address address) {
+	public void setAddress(final Address address) {
 		this.address = address;
 	}
 	public Contact(long mobile, long phone, String email, Address address) {

@@ -13,7 +13,7 @@ public class SavingAccount {
 	/**
 	 * @param balance the balance to set
 	 */
-	public void setBalance(float balance) {
+	public void setBalance(final float balance) {
 		this.balance = balance;
 	}
 	/**
@@ -25,7 +25,7 @@ public class SavingAccount {
 	/**
 	 * @param interestRate the interestRate to set
 	 */
-	public void setInterestRate(float interestRate) {
+	public void setInterestRate(final float interestRate) {
 		this.interestRate = interestRate;
 	}
 	/**
@@ -37,7 +37,7 @@ public class SavingAccount {
 	/**
 	 * @param period the period to set
 	 */
-	public void setPeriod(long period) {
+	public void setPeriod(final long period) {
 		this.period = period;
 	}
 	public SavingAccount() {
@@ -46,7 +46,7 @@ public class SavingAccount {
 	/**
 	 * @param balance
 	 */
-	public SavingAccount(float balance) {
+	public SavingAccount(final float balance) {
 		super();
 		this.balance = balance;
 	}

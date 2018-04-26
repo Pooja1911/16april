@@ -9,7 +9,7 @@ public class AccountServiceImpl implements IAccountService {
 
 	SavingAccount savingAccount;
 
-	public SavingAccount withdraw(float amount, SavingAccount save) {
+	public SavingAccount withdraw(final float amount, final SavingAccount save) {
 
 		float balance = save.getBalance();
 		if (balance < amount) {
@@ -28,7 +28,7 @@ public class AccountServiceImpl implements IAccountService {
 		return save;
 	}
 
-	public SavingAccount deposit(float amount, SavingAccount save) {
+	public SavingAccount deposit(final float amount, final SavingAccount save) {
 
 		if (amount < 0) {
 			LOGGER.info("Negative amount is not possible");
