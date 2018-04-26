@@ -1,8 +1,10 @@
 package com.cg.model;
 
+import java.util.List;
 
+import com.cg.service.IAccountService;
 
-public class SavingAccount {
+public class SavingAccount implements IAccountService{
 	private float balance;
 	private int accountNumber;
 	
@@ -61,6 +63,18 @@ public class SavingAccount {
 	@Override
 	public String toString() {
 		return "SavingAccount [balance=" + balance + ", accountNumber=" + accountNumber + "]";
+	}
+	public List<SavingAccount> addAccount(SavingAccount account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public SavingAccount deposit(float amount, SavingAccount save) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public SavingAccount withdraw(float withdrawAmount, SavingAccount save) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

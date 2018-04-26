@@ -42,11 +42,11 @@ public class BankMain {
 		 * project name: SpringBank method name: addCustomer(Customer customer) method
 		 * description: it will add multiple customer in a bank
 		 */
-		final Customer customer = ctx.getBean("customer", Customer.class);
+		final Customer customer = ctx.getBean("customer1", Customer.class);
 		List<Customer> customerlist;
 
-		final ICustomerService customerService = ctx.getBean("customerService", CustomerServiceImpl.class);
-		customerlist = customerService.addCustomer(customer);
+		ICustomerService customerService = ctx.getBean("customerService", CustomerServiceImpl.class);
+		//customerlist = customerService.addCustomer(customer);
 
 		/*
 		 * project name: SpringBank method name: addContact(Contact contact) method
@@ -77,6 +77,19 @@ public class BankMain {
 		final float withdrawAmount = scan.nextFloat();
 		savingAccount = accountService.withdraw(withdrawAmount, savingAccount);
 		LOGGER.info("" + savingAccount.getBalance());
+		
+		SavingAccount account=ctx.getBean("account",SavingAccount.class);
+		IAccountService accountService1=ctx.getBean("accountService1",AccountServiceImpl.class);
+		List<SavingAccount>addAccount=accountService1.addAccount(account);
+		
+
+		final Customer customer1 = (Customer )ctx.getBean("customer1");
+		
+		System.out.println("new customer "+customer1);
+
+		customerService = ctx.getBean("customerService", CustomerServiceImpl.class);
+		 List<Customer> customerlist1 = customerService.addCustomer(customer1);
+		System.out.println("new list "+customerlist1);
 
 	}
 

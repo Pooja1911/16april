@@ -9,11 +9,16 @@ public class Customer {
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
+	
+	private String firstName;
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "Customer [firstName=" + firstName + ", lastName=" + lastName + "]";
+		return "Customer [firstName=" + firstName + ", lastName=" + lastName + ", customerId=" + customerId
+				+ ", accountList=" + accountList + "]";
 	}
-	private String firstName;
 	private String lastName;
 	private int customerId;
 	private List<IAccountService> accountList;

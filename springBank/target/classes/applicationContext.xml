@@ -10,7 +10,7 @@
     <bean id="bank" class="com.cg.model.Bank">
     <constructor-arg type="java.lang.String" value="Axis"></constructor-arg>
     <constructor-arg index="1">
-    <ref bean="customer"></ref>
+    <ref bean="customer1"></ref>
     </constructor-arg>
     </bean>
     <bean id="bankDao" class="com.cg.repository.BankDaoImpl"></bean>
@@ -19,10 +19,11 @@
     </bean>
     
     <!-- customer bean instantiation -->
-     <bean id="customer" class="com.cg.model.Customer">
+    <!--  <bean id="customer" class="com.cg.model.Customer">
      <constructor-arg index="0" value="Pooja"></constructor-arg>
      <constructor-arg index="1" value="Jain"></constructor-arg>
-     </bean>
+  
+     </bean> -->
       <bean id="customerDao" class="com.cg.repository.CustomerDaoImpl"></bean>
     <bean id="customerService" class="com.cg.service.CustomerServiceImpl">
     <constructor-arg index="0" ref="customerDao"></constructor-arg>
@@ -49,7 +50,30 @@
     </bean>
     
     <bean id="savingAccount" class="com.cg.model.SavingAccount"></bean>
-  
+    <bean id="accountDao" class="com.cg.repository.AccountDaoImpl"></bean>
     <bean id="accountService" class="com.cg.service.AccountServiceImpl">
+     </bean>
+     <!--for ADDING Aaccount  -->
+     <bean id="accountService1" class="com.cg.service.AccountServiceImpl">
+     <constructor-arg>
+     <ref bean="accountDao"></ref>
+     </constructor-arg>
+     </bean>
+     
+     <bean id="account" class="com.cg.model.SavingAccount" >
+     <constructor-arg index="0" value="1000"></constructor-arg>
+     <constructor-arg index="1" value="1001"></constructor-arg>
+     </bean>
+     
+      <!-- customer bean instantiation -->
+     <bean id="customer1" class="com.cg.model.Customer">
+     <constructor-arg index="0" value="Heena"></constructor-arg>
+     <constructor-arg index="1" value="Jain"></constructor-arg>
+     <constructor-arg index="2" value="101" type=""></constructor-arg>
+     <constructor-arg index="3">
+     <list>
+     <ref bean="account"></ref>
+     </list>
+     </constructor-arg>
      </bean>
     </beans>
