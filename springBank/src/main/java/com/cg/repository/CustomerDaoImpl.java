@@ -9,13 +9,14 @@ public class CustomerDaoImpl implements ICustomerDao{
 	List<Customer> list;
 	public List<Customer> addCustomer(Customer customer) {
 		// TODO Auto-generated method stub
-		if(list.isEmpty())
+		if(this.list==null)
 		{
-		 list=new ArrayList<Customer>();
+		 this.list=new ArrayList<Customer>();
+		 this.list.add(customer);
 		}
 		else
 		{
-		list.add(customer);
+		this.list.add(customer);
 		}
 		return list;
 	}

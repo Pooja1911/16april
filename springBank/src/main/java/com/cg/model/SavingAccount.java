@@ -1,9 +1,23 @@
 package com.cg.model;
 
+
+
 public class SavingAccount {
 	private float balance;
-	private float interestRate;
-	private long period;
+	private int accountNumber;
+	
+	/**
+	 * @return the accountNumber
+	 */
+	public int getAccountNumber() {
+		return accountNumber;
+	}
+	/**
+	 * @param accountNumber the accountNumber to set
+	 */
+	public void setAccountNumber(int accountNumber) {
+		this.accountNumber = accountNumber;
+	}
 	/**
 	 * @return the balance
 	 */
@@ -18,28 +32,7 @@ public class SavingAccount {
 	}
 	/**
 	 * @return the interestRate
-	 */
-	public float getInterestRate() {
-		return interestRate;
-	}
-	/**
-	 * @param interestRate the interestRate to set
-	 */
-	public void setInterestRate(final float interestRate) {
-		this.interestRate = interestRate;
-	}
-	/**
-	 * @return the period
-	 */
-	public long getPeriod() {
-		return period;
-	}
-	/**
-	 * @param period the period to set
-	 */
-	public void setPeriod(final long period) {
-		this.period = period;
-	}
+	
 	public SavingAccount() {
 		// TODO Auto-generated constructor stub
 	}
@@ -50,13 +43,29 @@ public class SavingAccount {
 		super();
 		this.balance = balance;
 	}
+	/**
+	 * @param balance
+	 * @param accountNumber
+	 */
+	public SavingAccount() {
+		// TODO Auto-generated constructor stub
+	}
+	public SavingAccount(final float balance, final int accountNumber) {
+		super();
+		this.balance = balance;
+		this.accountNumber = accountNumber;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "SavingAccount [balance=" + balance + ", interestRate=" + interestRate + ", period=" + period + "]";
+		return "SavingAccount [balance=" + balance + ", accountNumber=" + accountNumber + "]";
 	}
+	
+	
+
+	
 	
 
 }

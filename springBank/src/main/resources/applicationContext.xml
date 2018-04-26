@@ -9,6 +9,9 @@
   <!--bank instatane creation  -->
     <bean id="bank" class="com.cg.model.Bank">
     <constructor-arg type="java.lang.String" value="Axis"></constructor-arg>
+    <constructor-arg index="1">
+    <ref bean="customer"></ref>
+    </constructor-arg>
     </bean>
     <bean id="bankDao" class="com.cg.repository.BankDaoImpl"></bean>
     <bean id="bankService" class="com.cg.service.BankServiceImpl">
@@ -18,7 +21,8 @@
     <!-- customer bean instantiation -->
      <bean id="customer" class="com.cg.model.Customer">
      <constructor-arg index="0" value="Pooja"></constructor-arg>
-     <constructor-arg index="1" value="Jain"></constructor-arg></bean>
+     <constructor-arg index="1" value="Jain"></constructor-arg>
+     </bean>
       <bean id="customerDao" class="com.cg.repository.CustomerDaoImpl"></bean>
     <bean id="customerService" class="com.cg.service.CustomerServiceImpl">
     <constructor-arg index="0" ref="customerDao"></constructor-arg>

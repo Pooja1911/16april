@@ -10,16 +10,17 @@ public class BankDaoImpl implements IBankDao{
 	 private List<Bank> list;
 
 	public List<Bank> addBank(Bank bank) {
-		if(list.isEmpty())
+		if( this.list ==null )
 		{
-		 list=new ArrayList<Bank>();
-		list.add(bank);}
+			this.list=new ArrayList<Bank>();
+			this.list.add(bank);}
 		else
 		{
-			list.add(bank);
+			this.list.add(bank);
 		}
 		// TODO Auto-generated method stub
-		return list;
+		System.out.println(""+this.list);
+		return this.list;
 		
 	}
 	

@@ -8,12 +8,30 @@ package com.cg.model;
  */
 public class Bank {
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "Bank [name=" + name + "]";
+		return "Bank [name=" + name + ", customer=" + customer + "]";
 	}
 
 	private String name;
+	private Customer customer;
+
+	/**
+	 * @return the customer
+	 */
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	/**
+	 * @param customer the customer to set
+	 */
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 
 	/**
 	 * method name: getName method description : to get the bank name
@@ -30,5 +48,16 @@ public class Bank {
 		super();
 		this.name = name;
 	}
+
+	/**
+	 * @param name
+	 * @param customer
+	 */
+	public Bank(String name, Customer customer) {
+		super();
+		this.name = name;
+		this.customer = customer;
+	}
+	
 
 }

@@ -9,13 +9,14 @@ public class ContactDaoImpl implements IContactDao{
 	List<Contact> list;
 	public List<Contact> addContact(Contact contact) {
 		// TODO Auto-generated method stub
-		if(list.isEmpty())
+		if(this.list==null)
 		{
-		 list=new ArrayList<Contact>();
+		 this.list=new ArrayList<Contact>();
+		 this.list.add(contact);
 		}
 		else
 		{
-		list.add(contact);
+		this.list.add(contact);
 		}
 		return list;
 	}
