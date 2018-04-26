@@ -14,14 +14,43 @@ public class Customer {
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
+	
+	private String lastName;
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "Customer [firstName=" + firstName + ", lastName=" + lastName + ", customerId=" + customerId
-				+ ", accountList=" + accountList + "]";
+				+ ", contact=" + contact + ", accountList=" + accountList + "]";
 	}
-	private String lastName;
-	private int customerId;
-	private List<IAccountService> accountList;
+	private Integer customerId;
+	private Contact contact;
+	/**
+	 * @return the customerId
+	 */
+	public Integer getCustomerId() {
+		return customerId;
+	}
+	/**
+	 * @param customerId the customerId to set
+	 */
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+	}
+	/**
+	 * @return the accountList
+	 */
+	public List<SavingAccount> getAccountList() {
+		return accountList;
+	}
+	/**
+	 * @param accountList the accountList to set
+	 */
+	public void setAccountList(List<SavingAccount> accountList) {
+		this.accountList = accountList;
+	}
+	private List<SavingAccount> accountList;
 	/**
 	 * @return the firstName
 	 */
@@ -46,12 +75,25 @@ public class Customer {
 	 * @param customerId
 	 * @param accountList
 	 */
-	public Customer(final String firstName, final String lastName, final int customerId, final List<IAccountService> accountList) {
+	public Customer(final String firstName, final String lastName, final Integer customerId, final List<SavingAccount> accountList,Contact contact) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.customerId = customerId;
 		this.accountList = accountList;
+		this.contact=contact;
+	}
+	/**
+	 * @return the contact
+	 */
+	public Contact getContact() {
+		return contact;
+	}
+	/**
+	 * @param contact the contact to set
+	 */
+	public void setContact(Contact contact) {
+		this.contact = contact;
 	}
 	/**
 	 * @return the lastName

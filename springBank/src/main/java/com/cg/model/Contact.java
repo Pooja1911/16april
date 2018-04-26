@@ -60,6 +60,13 @@ public class Contact {
 	public void setAddress(final Address address) {
 		this.address = address;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Contact [mobile=" + mobile + ", phone=" + phone + ", email=" + email + ", address=" + address + "]";
+	}
 	public Contact(long mobile, long phone, String email, Address address) {
 		super();
 		this.mobile = mobile;

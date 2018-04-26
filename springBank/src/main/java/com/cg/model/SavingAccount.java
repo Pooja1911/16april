@@ -68,13 +68,18 @@ public class SavingAccount implements IAccountService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public SavingAccount deposit(float amount, SavingAccount save) {
+	public SavingAccount deposit(float amount, Customer cust) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public SavingAccount withdraw(float withdrawAmount, SavingAccount save) {
+	public SavingAccount withdraw(float amount, Customer cust) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public void deleteAccount(Customer cust, Integer custId) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

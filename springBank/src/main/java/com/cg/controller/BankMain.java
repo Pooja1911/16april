@@ -42,10 +42,20 @@ public class BankMain {
 		 * project name: SpringBank method name: addCustomer(Customer customer) method
 		 * description: it will add multiple customer in a bank
 		 */
-		final Customer customer = ctx.getBean("customer1", Customer.class);
-		List<Customer> customerlist;
+		//final Customer customer = ctx.getBean("customer1", Customer.class);
+		//List<Customer> customerlist;
 
 		ICustomerService customerService = ctx.getBean("customerService", CustomerServiceImpl.class);
+		
+		
+		
+         final Customer customer1 = (Customer )ctx.getBean("customer1");
+		
+		//System.out.println("new customer "+customer1);
+
+		customerService = ctx.getBean("customerService", CustomerServiceImpl.class);
+		 List<Customer> customerlist1 = customerService.addCustomer(customer1);
+		System.out.println("new list "+customerlist1);
 		//customerlist = customerService.addCustomer(customer);
 
 		/*
@@ -62,10 +72,10 @@ public class BankMain {
 		 * description: it will deposit some amount to a savingAccount
 		 */
 		SavingAccount savingAccount = ctx.getBean("savingAccount", SavingAccount.class);
-		LOGGER.info("Enter the amount you want to enter");
+		System.out.println("Enter the amount to deposit");
 		 final float depositAmount = scan.nextFloat();
 		IAccountService accountService = ctx.getBean("accountService", AccountServiceImpl.class);
-		savingAccount = accountService.deposit(depositAmount, savingAccount);
+		savingAccount = accountService.deposit(depositAmount, customer1);
 		System.out.println(savingAccount.getBalance());
 
 		/*
@@ -73,23 +83,28 @@ public class BankMain {
 		 * method description: it will withdraw some valid amount from the account
 		 * balance
 		 */
-		LOGGER.info("Enter the amount you want to enter");
+		System.out.println("Enter the amount you want to withdraw");
 		final float withdrawAmount = scan.nextFloat();
-		savingAccount = accountService.withdraw(withdrawAmount, savingAccount);
+		savingAccount = accountService.withdraw(withdrawAmount, customer1);
 		LOGGER.info("" + savingAccount.getBalance());
 		
 		SavingAccount account=ctx.getBean("account",SavingAccount.class);
 		IAccountService accountService1=ctx.getBean("accountService1",AccountServiceImpl.class);
 		List<SavingAccount>addAccount=accountService1.addAccount(account);
-		
+		System.out.println("my account"+account);
 
-		final Customer customer1 = (Customer )ctx.getBean("customer1");
-		
-		System.out.println("new customer "+customer1);
-
-		customerService = ctx.getBean("customerService", CustomerServiceImpl.class);
-		 List<Customer> customerlist1 = customerService.addCustomer(customer1);
-		System.out.println("new list "+customerlist1);
+		/*
+		 * project name: 
+           method name: update(float,Object of SavingAccount)
+		 * method description: it will update customer details
+		 * 
+		 */
+          LOGGER.info("Enter customerId");
+          Integer custId=scan.nextInt();
+          LOGGER.info("Enter the email you want to update");
+          String update=scan.next();
+		customerService.updateDetails(customer1, update, custId);
+		System.out.println(customer1);
 
 	}
 

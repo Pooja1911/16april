@@ -1,15 +1,21 @@
 package com.cg.service;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Logger;
 
+import com.cg.model.Customer;
 import com.cg.model.SavingAccount;
 import com.cg.repository.IAccountDao;
 
 public class AccountServiceImpl implements IAccountService {
 	final Logger LOGGER = Logger.getLogger(AccountServiceImpl.class.getName());
+	Scanner scan=new Scanner(System.in);
      IAccountDao accountDao;
 	SavingAccount savingAccount;
+	Iterator iterator;
+	IAccountService accountServ;
 public AccountServiceImpl() {
 	// TODO Auto-generated constructor stub
 }
@@ -21,9 +27,23 @@ public AccountServiceImpl() {
 		this.accountDao = accountDao;
 	}
 
-	public SavingAccount withdraw(final float amount, final SavingAccount save) {
+	public SavingAccount withdraw(final float amount, final Customer cust) {
 
-		float balance = save.getBalance();
+		
+		LOGGER.info("Enter customer id");
+		Integer custId=scan.nextInt();
+		LOGGER.info("Enter account number");
+		Integer accountNumber=scan.nextInt();
+          if((custId).equals(cust.getCustomerId()))
+          {
+        	  List<SavingAccount> accountlist=cust.getAccountList();
+        	 
+        	  savingAccount=cust.getAccountList().get(0);
+        	  
+        	  if((accountNumber).equals(savingAccount.getAccountNumber()))
+        	  {        	  
+        		  float balance = savingAccount.getBalance();
+        	  
 		if (balance < amount) {
 			LOGGER.info("your balance is less than amount!!!");
 
@@ -33,30 +53,54 @@ public AccountServiceImpl() {
 		} else {
 
 			balance = balance - amount;
-			save.setBalance(balance);
+			savingAccount.setBalance(balance);
 
 		}
-
-		return save;
+        	  }
+          }
+		return savingAccount;
+	
 	}
+          
 
-	public SavingAccount deposit(final float amount, final SavingAccount save) {
+	public SavingAccount deposit(final float amount,final Customer cust )
+	{
+		LOGGER.info("Enter customer id");
+		Integer custId=scan.nextInt();
+		LOGGER.info("Enter account number");
+		Integer accountNumber=scan.nextInt();
+          if((custId).equals(cust.getCustomerId()))
+          {
+        	  List<SavingAccount> accountlist=cust.getAccountList();
+        	 
+        	  savingAccount=cust.getAccountList().get(0);
+        	  
+        	  if((accountNumber).equals(savingAccount.getAccountNumber()))
+        	  {        	  
+        	  if (amount < 0) {
+      			LOGGER.info("Negative amount is not possible");
 
-		if (amount < 0) {
-			LOGGER.info("Negative amount is not possible");
-
-		} else {
-			float balance = save.getBalance();
+        	  }
+        	  else {
+			float balance = savingAccount.getBalance();
+			System.out.println(balance);
 			balance = balance + amount;
-			save.setBalance(balance);
-
+			savingAccount.setBalance(balance);
+        	  }
 		}
-		return save;
+        	  }
+       
+          System.out.println("balance"+savingAccount);
+		return savingAccount;
 	}
 
 	public List<SavingAccount> addAccount(SavingAccount account) {
 		// TODO Auto-generated method stub
 		return accountDao.addAccount(account);
+	}
+	public void deleteAccount(Customer cust,Integer custId) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

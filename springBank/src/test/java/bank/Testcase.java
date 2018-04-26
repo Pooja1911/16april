@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -19,10 +20,15 @@ import com.cg.service.IAccountService;
 
 public class Testcase {
 	Bank bank=new Bank("Axis");
-	Customer customer=new Customer("Pooja","Jain");
+	
+	
 	Address address=new Address("newStreet","123","23412","Mumbai");
 	Contact contact=new Contact(900121234,324567,"pooja@gmail.com",address);
-	SavingAccount account=new SavingAccount(1000);
+	SavingAccount account=new SavingAccount(1000,1001);
+	List<SavingAccount> list =new ArrayList<SavingAccount>();
+	list.add(account);
+	
+	Customer customer=new Customer("Pooja","Jain",101,list,contact);
 	IAccountService accountService=new AccountServiceImpl();
 	
 	@Before
@@ -76,7 +82,7 @@ public class Testcase {
 	public void bankTestcase()
 	{
 		//account.setBalance(1000);
-		account=accountService.deposit(200,account);
+		account=accountService.deposit(200,customer);
 		
 		assertTrue(account.getBalance()==1200);
 		
@@ -85,7 +91,7 @@ public class Testcase {
 	@Test
 	public void falsedepositcheck()
 	{
-		accountService.deposit(-2000,account);
+		accountService.deposit(-2000,customer);
 		assertFalse(account.getBalance()==100);
 	}
 
@@ -93,14 +99,14 @@ public class Testcase {
 	public void withdrawcheck()
 	{
 	
-		account=accountService.withdraw(300,account);
+		account=accountService.withdraw(300,customer);
 		assertTrue(account.getBalance()==700);
 	}
 
 	@Test
 	public void withdrawfalsecheck()
 	{
-		accountService.withdraw(2000, account);
+		accountService.withdraw(2000, customer);
 		assertTrue("your balance is less than amount!!!",true);
 	}
 	

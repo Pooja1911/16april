@@ -69,11 +69,14 @@
      <bean id="customer1" class="com.cg.model.Customer">
      <constructor-arg index="0" value="Heena"></constructor-arg>
      <constructor-arg index="1" value="Jain"></constructor-arg>
-     <constructor-arg index="2" value="101" type=""></constructor-arg>
+     <constructor-arg index="2" value="101" ></constructor-arg>
      <constructor-arg index="3">
      <list>
      <ref bean="account"></ref>
      </list>
+     </constructor-arg>
+     <constructor-arg index="4">
+     <ref bean="contact"></ref>
      </constructor-arg>
      </bean>
     </beans>
