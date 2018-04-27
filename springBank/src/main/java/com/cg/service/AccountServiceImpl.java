@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import com.cg.model.Customer;
 import com.cg.model.SavingAccount;
+import com.cg.model.Statment;
 import com.cg.repository.IAccountDao;
 
 public class AccountServiceImpl implements IAccountService {
@@ -100,7 +101,26 @@ public AccountServiceImpl() {
 	}
 	public void deleteAccount(Customer cust,Integer custId) {
 		// TODO Auto-generated method stub
-		
+		if(custId.equals(cust.getCustomerId()))
+		{
+			
+			LOGGER.info("Enter the account no you want to delete");
+			Integer accountNo=scan.nextInt();
+              int count=0;
+              
+			List<SavingAccount> list=cust.getAccountList();
+			savingAccount=cust.getAccountList().get(count);
+			if(accountNo.equals(savingAccount.getAccountNumber()))
+			{
+			list.remove(count);
+			}
+			count++;
+		}
+	}
+	@Override
+	public List<Statment> addStatement(Statment statment) {
+		// TODO Auto-generated method stub
+		return accountDao.addStatement(statment);
 	}
 
 }

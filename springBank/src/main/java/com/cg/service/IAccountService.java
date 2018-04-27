@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cg.model.Customer;
 import com.cg.model.SavingAccount;
+import com.cg.model.Statment;
 
 public interface IAccountService {
 
@@ -12,5 +13,5 @@ public interface IAccountService {
 
 	public SavingAccount withdraw(final float amount, final Customer cust);
 	public void deleteAccount(Customer cust,Integer custId);
-
+	List<Statment> addStatement(Statment statment);
 }

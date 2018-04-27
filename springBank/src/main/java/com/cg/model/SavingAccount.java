@@ -7,7 +7,31 @@ import com.cg.service.IAccountService;
 public class SavingAccount implements IAccountService{
 	private float balance;
 	private int accountNumber;
+	private List<Statment> statementList;
 	
+	/**
+	 * @param balance
+	 * @param accountNumber
+	 * @param statementList
+	 */
+	public SavingAccount(float balance, int accountNumber, List<Statment> statementList) {
+		super();
+		this.balance = balance;
+		this.accountNumber = accountNumber;
+		this.statementList = statementList;
+	}
+	/**
+	 * @return the statementList
+	 */
+	public List<Statment> getStatementList() {
+		return statementList;
+	}
+	/**
+	 * @param statementList the statementList to set
+	 */
+	public void setStatementList(List<Statment> statementList) {
+		this.statementList = statementList;
+	}
 	/**
 	 * @return the accountNumber
 	 */
@@ -80,6 +104,11 @@ public class SavingAccount implements IAccountService{
 	public void deleteAccount(Customer cust, Integer custId) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public List<Statment> addStatement(Statment statment) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

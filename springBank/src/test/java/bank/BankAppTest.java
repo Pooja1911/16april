@@ -5,7 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -16,20 +15,19 @@ import com.cg.model.Bank;
 import com.cg.model.Contact;
 import com.cg.model.Customer;
 import com.cg.model.SavingAccount;
-import com.cg.model.Statment;
 import com.cg.service.AccountServiceImpl;
 import com.cg.service.IAccountService;
 
-public class Testcase {
-	Bank bank=new Bank("Axis");
+public class BankAppTest {
+Bank bank=new Bank("Axis");
+	
+	
 	Address address=new Address("newStreet","123","23412","Mumbai");
 	Contact contact=new Contact(900121234,324567,"pooja@gmail.com",address);
-	Statment statment=new Statment(new Date(),"Statment1");
-	List<Statment> statmentList=new ArrayList<Statment>();
+	SavingAccount account=new SavingAccount(1000,1001);
+	List<SavingAccount> list =new ArrayList<SavingAccount>();	
 	
-	//SavingAccount account=new SavingAccount(1000,1001,);
-	List<SavingAccount> list1 =new ArrayList<SavingAccount>();	
-	//Customer customer=new Customer("Pooja","Jain",101,list,contact);
+	Customer customer=new Customer("Pooja","Jain",101,list,contact);
 	IAccountService accountService=new AccountServiceImpl();
 	
 	@Before
@@ -44,7 +42,7 @@ public class Testcase {
 		assertEquals("Axis",bank.getName());
 	}
 
-	/*@Test
+	@Test
 	public void checkCustomerName()
 	{
 		assertEquals("Pooja",customer.getFirstName());
@@ -110,5 +108,5 @@ public class Testcase {
 		accountService.withdraw(2000, customer);
 		assertTrue("your balance is less than amount!!!",true);
 	}
-	*/
+	
 }

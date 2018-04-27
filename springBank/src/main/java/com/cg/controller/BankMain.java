@@ -12,6 +12,7 @@ import com.cg.model.Bank;
 import com.cg.model.Contact;
 import com.cg.model.Customer;
 import com.cg.model.SavingAccount;
+import com.cg.model.Statment;
 import com.cg.service.AccountServiceImpl;
 import com.cg.service.BankServiceImpl;
 import com.cg.service.ContactServiceImpl;
@@ -46,9 +47,6 @@ public class BankMain {
 		//List<Customer> customerlist;
 
 		ICustomerService customerService = ctx.getBean("customerService", CustomerServiceImpl.class);
-		
-		
-		
          final Customer customer1 = (Customer )ctx.getBean("customer1");
 		
 		//System.out.println("new customer "+customer1);
@@ -92,20 +90,45 @@ public class BankMain {
 		IAccountService accountService1=ctx.getBean("accountService1",AccountServiceImpl.class);
 		List<SavingAccount>addAccount=accountService1.addAccount(account);
 		System.out.println("my account"+account);
-
 		/*
-		 * project name: 
+		 * project name: Spring 
            method name: update(float,Object of SavingAccount)
 		 * method description: it will update customer details
 		 * 
 		 */
+		Statment statment = ctx.getBean("statment", Statment.class);
+		Statment statment1 = ctx.getBean("statment1", Statment.class);
+		LOGGER.info("Add Statment");
+		List<Statment> statList=accountService1.addStatement(statment);
+		statList=accountService1.addStatement(statment1);
+		System.out.println(""+statList);
+		/*
+		 * project name: SpringBank
+           method name: update(float,Object of SavingAccount)
+		 * method description: it will update customer details
+		 * 
+		 */
+	
           LOGGER.info("Enter customerId");
           Integer custId=scan.nextInt();
           LOGGER.info("Enter the email you want to update");
           String update=scan.next();
 		customerService.updateDetails(customer1, update, custId);
 		System.out.println(customer1);
-
+		/*
+		 * project name: SpringBank
+           method name: delete(float,Object of SavingAccount)
+		 * method description: it will delete account details
+		 * 
+		 */
+		
+		LOGGER.info("Enter your customer id");
+		custId=scan.nextInt();
+		accountService.deleteAccount(customer1, custId);
+		System.out.println(customer1);
+       
+		
+		
 	}
 
 }
