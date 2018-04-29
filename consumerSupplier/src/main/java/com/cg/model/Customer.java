@@ -1,84 +1,70 @@
 package com.cg.model;
+public class Customer
 
-public class Customer {
-	
-	
+{
 	public long customerId;
 	public String customerName;
-	public Address customerAddress;
+	public String customerAddress;
 	public String paymentMode;
-	public Goods customerGoods;
+	public String retailerName;
 	/**
-	 * method name: getCustomerGoods
-	 * method description : to get the customer's goods
+	 * @return the retailerName
 	 */
-	public Goods getCustomerGoods() {
-		return customerGoods;
+	public String getRetailerName() {
+		return retailerName;
 	}
 	/**
-	 * method name: setCustomerGoods(Goods)
-	 * method description: to set the customer goods
+	 * @param retailerName the retailerName to set
 	 */
-	public void setCustomerGoods(Goods customerGoods) {
-		this.customerGoods = customerGoods;
+	public void setRetailerName(String retailerName) {
+		this.retailerName = retailerName;
 	}
 	/**
-	 * method name: getCustomerId()
-	 * method description: this method get the customer id
+	 * @return the customerId
 	 */
 	public long getCustomerId() {
 		return customerId;
 	}
 	/**
-	 * method name: setCustomerId(long)
-	 * method description: this method get the name of street
+	 * @param customerId the customerId to set
 	 */
 	public void setCustomerId(long customerId) {
 		this.customerId = customerId;
 	}
 	/**
-	 * method name: getCustomerName()
-	 * method description: this method get the name of customer
+	 * @return the customerName
 	 */
 	public String getCustomerName() {
 		return customerName;
 	}
 	/**
-	 * method name : setCustomerName(String)
-	 * method description: this method get the name of street
+	 * @param customerName the customerName to set
 	 */
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
 	/**
-	 * method name: getCustomerAddress()
-	 * method description: this method get customer Address
+	 * @return the customerAddress
 	 */
-	public Address getCustomerAddress() {
+	public String getCustomerAddress() {
 		return customerAddress;
 	}
 	/**
-	 * method name: setCustomerAddress(Address)
-	 * method description: this method set customer address
+	 * @param customerAddress the customerAddress to set
 	 */
-	public void setCustomerAddress(Address customerAddress) {
+	public void setCustomerAddress(String customerAddress) {
 		this.customerAddress = customerAddress;
 	}
 	/**
-	 * method name: getPaymentMode()
-	 * method description: this method get the mode of payment
+	 * @return the paymentMode
 	 */
 	public String getPaymentMode() {
 		return paymentMode;
 	}
 	/**
-	 * method name: setPaymentMode(String)
-	 * method description: this method set the mode of payment
+	 * @param paymentMode the paymentMode to set
 	 */
 	public void setPaymentMode(String paymentMode) {
 		this.paymentMode = paymentMode;
 	}
-	
-	
-
 }

@@ -1,5 +1,4 @@
 package com.cg.model;
-
 /**
  * Project Name: ConsumerSupplier
  * Project Description: this application is to perform various functions between a retailer and customer
@@ -12,6 +11,28 @@ public class Goods {
 	public String goodsName;
 	public long goodsQuantity;
 	public float goodsPrice;
+	public long SupplierId;
+	
+	public Goods(String goodsName, long goodsQuantity, float goodsPrice,
+			long supplierId) {
+		super();
+		this.goodsName = goodsName;
+		this.goodsQuantity = goodsQuantity;
+		this.goodsPrice = goodsPrice;
+		SupplierId = supplierId;
+	}
+	/**
+	 * @return the supplierId
+	 */
+	public long getSupplierId() {
+		return SupplierId;
+	}
+	/**
+	 * @param supplierId the supplierId to set
+	 */
+	public void setSupplierId(long supplierId) {
+		SupplierId = supplierId;
+	}
 	/**
 	 * method name: getGoodsId
 	 * method description: to get the goods id
