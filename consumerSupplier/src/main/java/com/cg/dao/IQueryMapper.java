@@ -13,7 +13,7 @@ public interface IQueryMapper {
 	public static final String DELETE_SUPPLIER="DELETE FROM supplier WHERE supplier_id=?";
 	public static final String UPDATE_SUPPLIER="UPDATE FROM supplier SET amount=? WHERE supplier_id=?";
 	public static final String supplier_ID_QUERY_SEQUENCE="SELECT supplierID_seq.NEXTVAL FROM DUAL";
-	z
-
+	public static final String GET_RETAILER_NAME="SELECT retailer_name FROM retailer WHERE retailer_name=R1";
+    
 
 }

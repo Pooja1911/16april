@@ -5,20 +5,28 @@ import com.cg.dao.IGoodsDao;
 import com.cg.model.Goods;
 
 public class GoodsServiceImpl implements IGoodsService {
- public IGoodsDao goodsDao=new GoodsDaoImpl();
+ public IGoodsDao goodsDao;
+	/**
+ * @param goodsDao
+ */
+public GoodsServiceImpl(IGoodsDao goodsDao) {
+	super();
+	this.goodsDao = goodsDao;
+}
+
 	public long addGoods(Goods goods) {
 		// TODO Auto-generated method stub
 		return goodsDao.addGoods(goods);
 	}
 
-	public void removeGoods(long goodsId) {
+	public long removeGoods(long goodsId) {
 		// TODO Auto-generated method stub
-		goodsDao.removeGoods(goodsId);
+		return goodsDao.removeGoods(goodsId);
 	}
 
-	public void update(long goodsId, float price) {
+	public long update(long goodsId, float price) {
 		// TODO Auto-generated method stub
-		goodsDao.update(goodsId, price);
+		return goodsDao.update(goodsId, price);
 	}
 
 }

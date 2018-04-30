@@ -18,6 +18,31 @@ public class Supplier {
 		return supplierId;
 	}
 	
+	
+
+	/**
+	 * @param supplierId
+	 * @param supplierName
+	 * @param supplierAddress
+	 * @param quantityOrder
+	 * @param orderId
+	 * @param amount
+	 * @param retailerName
+	 */
+	public Supplier(long supplierId, String supplierName, String supplierAddress, long quantityOrder, long orderId,
+			float amount, String retailerName) {
+		super();
+		this.supplierId = supplierId;
+		this.supplierName = supplierName;
+		this.supplierAddress = supplierAddress;
+		this.quantityOrder = quantityOrder;
+		this.orderId = orderId;
+		this.amount = amount;
+		this.retailerName = retailerName;
+	}
+
+
+
 	/**
 	 * method name: getSupplierId
 	 * method description to get the supplier id

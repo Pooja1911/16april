@@ -25,6 +25,23 @@ public class Customer
 	public long getCustomerId() {
 		return customerId;
 	}
+	
+	/**
+	 * @param customerId
+	 * @param customerName
+	 * @param customerAddress
+	 * @param paymentMode
+	 * @param retailerName
+	 */
+	public Customer(long customerId, String customerName, String customerAddress, String paymentMode,
+			String retailerName) {
+		super();
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.customerAddress = customerAddress;
+		this.paymentMode = paymentMode;
+		this.retailerName = retailerName;
+	}
 	/**
 	 * @param customerId the customerId to set
 	 */

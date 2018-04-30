@@ -13,9 +13,17 @@ public class Goods {
 	public float goodsPrice;
 	public long SupplierId;
 	
-	public Goods(String goodsName, long goodsQuantity, float goodsPrice,
-			long supplierId) {
+	
+	/**
+	 * @param goodsId
+	 * @param goodsName
+	 * @param goodsQuantity
+	 * @param goodsPrice
+	 * @param supplierId
+	 */
+	public Goods(long goodsId, String goodsName, long goodsQuantity, float goodsPrice, long supplierId) {
 		super();
+		this.goodsId = goodsId;
 		this.goodsName = goodsName;
 		this.goodsQuantity = goodsQuantity;
 		this.goodsPrice = goodsPrice;

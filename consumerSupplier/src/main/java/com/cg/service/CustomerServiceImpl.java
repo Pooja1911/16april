@@ -1,26 +1,33 @@
 package com.cg.service;
 
-import com.cg.dao.CustomerDaoImpl;
 import com.cg.dao.ICustomerDao;
 import com.cg.model.Customer;
 
 public class CustomerServiceImpl implements ICustomerService {
-	ICustomerDao customerDao=new CustomerDaoImpl();
+	ICustomerDao customerDao;
+
+	/**
+	 * @param customerDao
+	 */
+	public CustomerServiceImpl(ICustomerDao customerDao) {
+		super();
+		this.customerDao = customerDao;
+	}
 
 	public long addCustomer(Customer customer) {
 		// TODO Auto-generated method stub
 		return customerDao.addCustomer(customer);
 	}
 
-	public void removeCustomer(long customerId) {
+	public long removeCustomer(long customerId) {
 		// TODO Auto-generated method stub
-		customerDao.removeCustomer(customerId);
+		return customerDao.removeCustomer(customerId);
 		
 	}
 
-	public void updateCustomer(String paymentMode, long customerId) {
+	public long updateCustomer(String paymentMode, long customerId) {
 		// TODO Auto-generated method stub
-		customerDao.updateCustomer(paymentMode, customerId);
+		return customerDao.updateCustomer(paymentMode, customerId);
 	}
 
 }

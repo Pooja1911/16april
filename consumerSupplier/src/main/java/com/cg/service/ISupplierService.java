@@ -1,5 +1,9 @@
 package com.cg.service;
 
-public interface ISupplierService {
+import com.cg.model.Supplier;
 
+public interface ISupplierService {
+	public long addSupplier(Supplier supplier);
+	public long updateSupplier(long supplierId,float amount);
+	public long deleteSupplier(long supplierId);
 }
