@@ -1,16 +1,13 @@
 package com.cg.dao;
 
-import java.sql.Connection;
 import java.sql.JDBCType;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.cg.dbUtil.DbConnection;
+
 import com.cg.model.Customer;
-import com.cg.model.Retailer;
+
 
 public class CustomerDaoImpl implements ICustomerDao {
 

@@ -8,8 +8,8 @@ import com.cg.model.Supplier;
 
 public interface IRetailerDao {
 	
-	public Goods viewGoods(String retailerName);
-	public List viewCustomer(String retailerName);
-	public Supplier viewSupplier(String retailerName);
+	public List<Goods> viewGoods(String retailerName);
+	public List<Customer> viewCustomer(String retailerName);
+	public List<Supplier> viewSupplier(String retailerName);
 
 }

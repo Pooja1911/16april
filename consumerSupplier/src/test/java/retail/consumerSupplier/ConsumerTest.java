@@ -15,7 +15,9 @@ import com.cg.service.CustomerServiceImpl;
 import com.cg.service.GoodsServiceImpl;
 import com.cg.service.ICustomerService;
 import com.cg.service.IGoodsService;
+import com.cg.service.IRetailerService;
 import com.cg.service.ISupplierService;
+import com.cg.service.RetailerServiceImpl;
 import com.cg.service.SupplierServiceImpl;
 
 public class ConsumerTest {
@@ -25,7 +27,8 @@ public class ConsumerTest {
 	final ICustomerService customerService = ctx.getBean("customerService", CustomerServiceImpl.class);
     final ISupplierService supplierService=ctx.getBean("supplierService",SupplierServiceImpl.class);
     final IGoodsService goodsService=ctx.getBean("goodsService",GoodsServiceImpl.class);
-	//@Test
+	final IRetailerService retailerService= ctx.getBean("retailerService",RetailerServiceImpl.class);
+    //@Test
 	public void addCustomer() {
 		Customer customer = new Customer(1, "sona", "chennai", "credit", "R2");
 		long value=customerService.addCustomer(customer);
