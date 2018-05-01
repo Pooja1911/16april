@@ -60,4 +60,15 @@
 			<ref bean="supplierDao"></ref>
 		</constructor-arg>
 	</bean>
+	<!-- for retailer -->
+	<bean id="retailerDao" class="com.cg.dao.RetailerDaoImpl">
+	<constructor-arg index=0>
+	<ref bean="jdbcTemplate"></ref>
+	</constructor-arg>
+	</bean>
+	<bean id="retailerService" class="com.cg.service.RetailerServiceImpl">
+	<constructor-arg index="0">
+	<ref bean="retailerDao"></ref>
+	</constructor-arg>
+	</bean>
 </beans>
