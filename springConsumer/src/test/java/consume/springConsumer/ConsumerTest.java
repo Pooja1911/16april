@@ -275,7 +275,7 @@ public class ConsumerTest{
 		   Goods goods1=new Goods(1006,"kitkat",12,30,101);
 		   long values=goodsService.addGoods(goods1);
 		   
-		}
+		} 
 		}
 	
 
