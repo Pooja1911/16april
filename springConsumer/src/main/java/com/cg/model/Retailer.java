@@ -28,6 +28,35 @@ public class Retailer {
 	public void setRetailerAddress(String retailerAddress) {
 		this.retailerAddress = retailerAddress;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((retailerName == null) ? 0 : retailerName.hashCode());
+		return result;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Retailer other = (Retailer) obj;
+		if (retailerName == null) {
+			if (other.retailerName != null)
+				return false;
+		} else if (!retailerName.equals(other.retailerName))
+			return false;
+		return true;
+	}
 
 	
 	

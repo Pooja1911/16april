@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.cg.dao.ICustomerDao;
 import com.cg.model.Customer;
 
-@Service("CustomerService")
+@Service("customerService")
 public class CustomerServiceImpl implements ICustomerService {
 	@Autowired
 	ICustomerDao customerDao;

@@ -7,7 +7,7 @@ import com.cg.dao.ISupplierDao;
 import com.cg.dao.SupplierDaoImpl;
 import com.cg.model.Supplier;
 
-@Service("SupplierService")
+@Service("supplierService")
 public class SupplierServiceImpl implements ISupplierService {
 	@Autowired
 	ISupplierDao supplierDao;

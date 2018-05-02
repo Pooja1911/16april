@@ -7,7 +7,7 @@ package com.cg.model;
  */
 public class Goods {
 	
-	public long goodsId;
+	public long goodsId;//goods_id
 	public String goodsName;
 	public long goodsQuantity;
 	public float goodsPrice;
@@ -97,6 +97,34 @@ public class Goods {
 	public void setGoodsPrice(float goodsPrice) {
 		this.goodsPrice = goodsPrice;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (goodsId ^ (goodsId >>> 32));
+		return result;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Goods other = (Goods) obj;
+		if (goodsId != other.goodsId)
+			return false;
+		return true;
+	}
 	
-
+public Goods() {
+	// TODO Auto-generated constructor stub
+}
 }

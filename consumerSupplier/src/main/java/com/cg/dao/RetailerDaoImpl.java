@@ -12,7 +12,7 @@ import com.cg.model.Goods;
 import com.cg.model.Supplier;
 
 public class RetailerDaoImpl implements IRetailerDao {
-	JdbcTemplate jdbcTemplate;
+	public JdbcTemplate jdbcTemplate;
 
 	/**
 	 * @param jdbcTemplate
@@ -25,7 +25,7 @@ public class RetailerDaoImpl implements IRetailerDao {
 	public List<Goods> viewGoods(String retailerName) {
 		// TODO Auto-generated method stub
 		List<Goods> list = jdbcTemplate
-				.query("SELECT g.goods_id,g.goods_name,g.goods_quantity,g.goods_price from goods g,supplier s where supplier_id=(SELECT s.supplier_id from supplier s,retailer r where retailer_name='"+retailerName+"'",
+				.query("SELECT * FROM goods where supplier_id in (SELECT supplier_id from supplier where retailer_name='"+retailerName+"')",
 						new BeanPropertyRowMapper<Goods>(Goods.class));
 		return list;
 	}
@@ -35,7 +35,7 @@ public class RetailerDaoImpl implements IRetailerDao {
 		// String
 		// query="SELECT customer.customer_id,customer.customer_name,customer.customer_address,customer.payment_mode FROM customer INNER JOIN retailer ON customer.retailer_name=retailer.retailer_name";
 		List<Customer> list = jdbcTemplate
-				.query("SELECT c.customer_id,c.customer_name,c.customer_address,c.payment_mode from customer c,retailer r WHERE retailer_name='"+retailerName+"'",
+				.query("SELECT * FROM customer WHERE retailer_name='"+retailerName+"'",
 						new BeanPropertyRowMapper<Customer>(Customer.class));
 
 		return list;
@@ -44,7 +44,7 @@ public class RetailerDaoImpl implements IRetailerDao {
 	public List<Supplier> viewSupplier(String retailerName) {
 		//
 		List<Supplier> list = jdbcTemplate
-				.query("SELECT s.supplier_id,s.supplier_name,s.supplier_address,s.quantity_order,s.order_id,s.amount FROM supplier s,retailer r WHERE retailer_name='"+retailerName+"'",
+				.query("SELECT * From supplier WHERE retailer_name='"+retailerName+"'",
 						new BeanPropertyRowMapper<Supplier>(Supplier.class));
 		return list;
 	}

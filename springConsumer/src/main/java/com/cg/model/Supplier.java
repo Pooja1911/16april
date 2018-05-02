@@ -3,7 +3,7 @@ package com.cg.model;
 import java.util.List;
 
 public class Supplier {
-	public long supplierId;
+	public long supplierId;//supplier_id
 	public String supplierName;
 	public String supplierAddress;
 	public long quantityOrder;
@@ -43,6 +43,7 @@ public class Supplier {
 		this.amount = amount;
 		this.retailerName = retailerName;
 	}
+	
 
 	/**
 	 * method name: getSupplierId method description to get the supplier id
@@ -135,6 +136,34 @@ public class Supplier {
 	 */
 	public void setRetailerName(String retailerName) {
 		this.retailerName = retailerName;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (supplierId ^ (supplierId >>> 32));
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Supplier other = (Supplier) obj;
+		if (supplierId != other.supplierId)
+			return false;
+		return true;
 	}
 
 }

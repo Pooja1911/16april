@@ -1,7 +1,7 @@
 package com.cg.dao;
 
 import com.cg.model.Customer;
-import com.cg.model.Retailer;
+
 
 public interface ICustomerDao {
 

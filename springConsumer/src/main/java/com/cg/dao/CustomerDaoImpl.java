@@ -12,10 +12,10 @@ import com.cg.model.Customer;
 public class CustomerDaoImpl implements ICustomerDao {
 
 	@Autowired
-	JdbcTemplate jdbcTemplate;
+	private JdbcTemplate jdbcTemplate;
 
 	public long addCustomer(Customer customer) {
-		String query = "INSERT INTO customer VALUES('"
+		final String query = "INSERT INTO customer VALUES('"
 				+ customer.getCustomerId() + "','" + customer.getCustomerName()
 				+ "','" + customer.getCustomerAddress() + "','"
 				+ customer.getPaymentMode() + "','"
@@ -27,7 +27,7 @@ public class CustomerDaoImpl implements ICustomerDao {
 
 	public long removeCustomer(long customerId) {
 		// TODO Auto-generated method stub
-		String query = "DELETE FROM customer WHERE customer_id='" + customerId
+		final String query = "DELETE FROM customer WHERE customer_id='" + customerId
 				+ "'";
 		return jdbcTemplate.update(query);
 
@@ -35,7 +35,7 @@ public class CustomerDaoImpl implements ICustomerDao {
 
 	public long updateCustomer(String paymentMode, long customerId) {
 
-		String query = "UPDATE customer SET payment_mode='" + paymentMode
+	final	String query = "UPDATE customer SET payment_mode='" + paymentMode
 				+ "' WHERE customer_id='" + customerId + "'";
 		return jdbcTemplate.update(query);
 	}
