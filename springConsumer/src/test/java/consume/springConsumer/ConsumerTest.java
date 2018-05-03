@@ -41,15 +41,15 @@ public class ConsumerTest{
 	@Test
 	public void addCustomer() {
 		
-		Customer customer = new Customer(9, "sona", "chennai", "credit", "R2");
+		Customer customer = new Customer(10, "sona", "chennai", "credit", "R2");
 		final long value=customerService.addCustomer(customer);
-		assertEquals("Data inserted",9, value);
+		assertEquals("Data inserted",10, value);
 	}
 	
 	@Test 
 	public void deleteCustomer()
 	{
-		Customer customer=new Customer(7, "sona", "chennai", "credit", "R2");
+		Customer customer=new Customer(9, "sona", "chennai", "credit", "R2");
 		long value=customerService.removeCustomer(1);
         assertEquals(1, value);
 	}
@@ -65,43 +65,43 @@ public class ConsumerTest{
    @Test
    public void addSupplier()
    {   
-	   Supplier supplier=new Supplier(107,"Sonam","Chennai",20,112,20,"R2");
+	   Supplier supplier=new Supplier(109,"Sonam","Chennai",20,112,20,"R2");
 	   long value=supplierService.addSupplier(supplier);
-	   assertEquals(107,value);
+	   assertEquals(109,value);
 	   
    }
    
    @Test
    public void updateSupplier()
    {
-	  long value= supplierService.updateSupplier(105, 40);
+	  long value= supplierService.updateSupplier(104, 40);
 	   assertEquals(1,value);
    }
    
    @Test
    public void deleteSupplier() {
-	   long value=supplierService.deleteSupplier(107);
+	   long value=supplierService.deleteSupplier(105);
 	   assertEquals(1,value);
 	      
    }
    @Test
    public void addGoods()
    {
-	   Goods goods=new Goods(1005,"kitkat",12,30,101);
+	   Goods goods=new Goods(1009,"kitkat",12,30,101);
 	   long value=goodsService.addGoods(goods);
-	   assertEquals(1005,value);
+	   assertEquals(1009,value);
    }
    
    @Test
    public void removeGoods()
    {
-	   long value=goodsService.removeGoods(1002);
+	   long value=goodsService.removeGoods(1005);
 	   assertEquals(1,value);
    }
    
    @Test
    public void updateGoods() {
-	   long value=goodsService.update(1005, 40);
+	   long value=goodsService.update(1006, 40);
 	   assertEquals(1,value);
    }
    
@@ -247,10 +247,10 @@ public class ConsumerTest{
 	@Test(expected=DuplicateKeyException.class)
 	public void checkprimarykey()
 	{
-		Customer customer = new Customer(11, "sona", "chennai", "credit", "R2");
+		Customer customer = new Customer(13, "sona", "chennai", "credit", "R2");
 		final long value=customerService.addCustomer(customer);
-		assertEquals("Data inserted",11, value);
-		Customer customer1 = new Customer(11, "sona", "chennai", "credit", "R2");
+		assertEquals("Data inserted",13, value);
+		Customer customer1 = new Customer(13, "sona", "chennai", "credit", "R2");
 		final long values=customerService.addCustomer(customer1);
 		
 	}
@@ -258,10 +258,10 @@ public class ConsumerTest{
 	@Test(expected=DuplicateKeyException.class)
 	public void checkprimarykeySupplier()
 	{
-		 Supplier supplier=new Supplier(109,"Sonam","Chennai",20,112,20,"R2");
+		 Supplier supplier=new Supplier(108,"Sonam","Chennai",20,112,20,"R2");
 		   long value=supplierService.addSupplier(supplier);
-		   assertEquals(109,value);
-		   Supplier supplier1=new Supplier(109,"Sonam","Chennai",20,112,20,"R2");
+		   assertEquals(108,value);
+		   Supplier supplier1=new Supplier(108,"Sonam","Chennai",20,112,20,"R2");
 		   long values=supplierService.addSupplier(supplier1);
 		   
 		   
@@ -269,10 +269,10 @@ public class ConsumerTest{
 	@Test(expected=DuplicateKeyException.class)
 		public void checkprimarykeyGoods()
 		{
-		Goods goods=new Goods(1006,"kitkat",12,30,101);
+		Goods goods=new Goods(1011,"kitkat",12,30,101);
 		   long value=goodsService.addGoods(goods);
-		   assertEquals(1006,value);
-		   Goods goods1=new Goods(1006,"kitkat",12,30,101);
+		   assertEquals(1011,value);
+		   Goods goods1=new Goods(1011,"kitkat",12,30,101);
 		   long values=goodsService.addGoods(goods1);
 		   
 		} 
