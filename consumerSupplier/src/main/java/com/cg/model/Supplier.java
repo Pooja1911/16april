@@ -131,5 +131,44 @@ public class Supplier {
 	public void setRetailerName(String retailerName) {
 		this.retailerName = retailerName;
 	}
+	public Supplier() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (supplierId ^ (supplierId >>> 32));
+		return result;
+	}
+
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Supplier other = (Supplier) obj;
+		if (supplierId != other.supplierId)
+			return false;
+		return true;
+	}
+	
 	
 }

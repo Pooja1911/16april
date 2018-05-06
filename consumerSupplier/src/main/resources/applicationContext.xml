@@ -62,7 +62,7 @@
 	</bean>
 	<!-- for retailer -->
 	<bean id="retailerDao" class="com.cg.dao.RetailerDaoImpl">
-	<constructor-arg index=0>
+	<constructor-arg>
 	<ref bean="jdbcTemplate"></ref>
 	</constructor-arg>
 	</bean>

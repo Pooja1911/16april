@@ -15,19 +15,19 @@ import com.cg.service.SupplierServiceImpl;
 
 public class ConsumerMain {
 
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		// TODO Auto-generated method stub
-		AbstractApplicationContext context = new AnnotationConfigApplicationContext(
+		  AbstractApplicationContext context = new AnnotationConfigApplicationContext(
 				ApplicationConfig.class);
-		IGoodsService goodsService = context.getBean("goodsService",
+		 IGoodsService goodsService = context.getBean("goodsService",
 				GoodsServiceImpl.class);
-		ICustomerService customerService = context.getBean("customerService",
+		 ICustomerService customerService = context.getBean("customerService",
 				CustomerServiceImpl.class);
-		ISupplierService supplierService = context.getBean("supplierService",
+		 ISupplierService supplierService = context.getBean("supplierService",
 				SupplierServiceImpl.class);
 		IRetailerService retailerService = context.getBean("retailerService",
 				RetailerServiceImpl.class);
-
+context.close();
 	}
 
 }
