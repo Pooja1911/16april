@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.cg.model.Customer;
 
-@Repository()
+@Repository
 @Qualifier("customerDao")
 public class CustomerDaoImpl implements ICustomerDao {
 

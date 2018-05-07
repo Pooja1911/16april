@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @SpringBootApplication
-//@EnableAutoConfiguration
+@EnableAutoConfiguration
 @ComponentScan(basePackages="com.cg")
 public class ConsumerMain {
 	
@@ -17,7 +17,7 @@ public class ConsumerMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		ApplicationContext ctx=SpringApplication.run(ConsumerMain.class, args);
+		SpringApplication.run(ConsumerMain.class, args);
 	}
 
 }

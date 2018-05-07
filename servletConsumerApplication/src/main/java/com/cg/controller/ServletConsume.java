@@ -23,7 +23,8 @@ public class ServletConsume extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	doPost(request,response);
+		
+	//doPost(request,response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,9 +35,11 @@ public class ServletConsume extends HttpServlet{
 	
 		IRetailerService retailerService = context.getBean("retailerService",
 				RetailerServiceImpl.class);
-		List<Customer> customerList = retailerService.viewCustomer("R1");
-
-		request.setAttribute("list", customerList);
+		List<Customer> customerList = retailerService.viewCustomer("R2");
+		
+		
+		request.setAttribute("list8", customerList);
+		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("home.jsp");
 		requestDispatcher.forward(request, response);
 		//doGet(request, response);
