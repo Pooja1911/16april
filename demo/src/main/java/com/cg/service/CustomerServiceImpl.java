@@ -3,17 +3,20 @@ package com.cg.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.hibernate.query.criteria.internal.predicate.ExistsPredicate;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.ConsumerMain;
 import com.cg.Exception.ConsumerException;
 import com.cg.dao.CustomerRepository;
 import com.cg.model.Customer;
 
 @Service("customerService")
 public class CustomerServiceImpl implements ICustomerService {
-
+	//final  Logger LOGGER = Logger.getLogger(ConsumerMain.class.getName());
 	@Autowired
 	public CustomerRepository customerRepository;
 
@@ -93,9 +96,33 @@ public class CustomerServiceImpl implements ICustomerService {
 	}
 
 	@Override
-	public List<Long> updateMultipleCustomer(List<Customer> customer, List<Long> id) throws ConsumerException {
+	public List<Customer> updateMultipleCustomer(List<Customer> customer) throws ConsumerException {
 		// TODO Auto-generated method stub
-		return null;
+		for(Customer custom: customer)
+		{
+		Optional<Customer> custome = customerRepository.findById(custom.getCustomerId());
+		if (custome.isPresent()) {
+			Customer cust = customerRepository.getOne(custom.getCustomerId());
+			if (custom
+					.getPaymentMode() != null) {
+				cust.setPaymentMode(custom.getPaymentMode());
+			}
+			if (custom.getCustomerAddress() != null) {
+				cust.setCustomerAddress(custom.getCustomerAddress());
+			}
+			if (custom.getCustomerName() != null) {
+				cust.setCustomerName(custom.getCustomerName());
+			}
+			if (custom.getRetailerName() != null) {
+				cust.setRetailerName(custom.getRetailerName());
+			}
+
+			customerRepository.save(cust);
+		} else {
+			throw new ConsumerException("Sorry !! such record not exist in database");
+		}
+		}
+		return customer;
 	}
 
 }

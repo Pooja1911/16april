@@ -12,5 +12,5 @@ public interface ICustomerService {
 	public Long updateCustomer(Customer customerReq,Long id) throws ConsumerException;
 	public void deleteCustomer(Long id) throws ConsumerException;
 	public List<Customer> search(String customerName,String customerAddress) throws ConsumerException;
-    public List<Long> updateMultipleCustomer(List<Customer> customer) throws ConsumerException;
+    public List<Customer> updateMultipleCustomer(List<Customer> customer) throws ConsumerException;
 }
