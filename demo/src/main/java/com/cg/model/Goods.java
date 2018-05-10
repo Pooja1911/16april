@@ -15,7 +15,7 @@ public class Goods {
 	@SequenceGenerator(name="seq", initialValue=1, allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
 	@Column(name="goods_id")
-	long goodsId;
+	public Long goodsId;
 	@Column(name="goods_name")
 	public String goodsName;
 	@Column(name="goods_quantity")
@@ -23,25 +23,25 @@ public class Goods {
 	@Column(name="goods_price")
 	public float goodsPrice;
 	@Column(name="supplier_id")
-	public long SupplierId;
+	public long supplierId;
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "Goods [goodsId=" + goodsId + ", goodsName=" + goodsName + ", goodsQuantity=" + goodsQuantity
-				+ ", goodsPrice=" + goodsPrice + ", SupplierId=" + SupplierId + "]";
+				+ ", goodsPrice=" + goodsPrice + ", supplierId=" + supplierId + "]";
 	}
 	/**
 	 * @return the goodsId
 	 */
-	public long getGoodsId() {
+	public Long getGoodsId() {
 		return goodsId;
 	}
 	/**
 	 * @param goodsId the goodsId to set
 	 */
-	public void setGoodsId(long goodsId) {
+	public void setGoodsId(Long goodsId) {
 		this.goodsId = goodsId;
 	}
 	/**
@@ -84,13 +84,13 @@ public class Goods {
 	 * @return the supplierId
 	 */
 	public long getSupplierId() {
-		return SupplierId;
+		return supplierId;
 	}
 	/**
 	 * @param supplierId the supplierId to set
 	 */
 	public void setSupplierId(long supplierId) {
-		SupplierId = supplierId;
+		this.supplierId = supplierId;
 	}
 public Goods() {
 	// TODO Auto-generated constructor stub

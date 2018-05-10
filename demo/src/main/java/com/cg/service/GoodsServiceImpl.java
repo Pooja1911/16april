@@ -16,6 +16,7 @@ public class GoodsServiceImpl implements IGoodsService{
 	@Override
 	public Goods addGoods(Goods goods) {
 		// TODO Auto-generated method stub
+		System.out.println("goods"+goods);
 		return goodsRepository.save(goods);
 	}
 
@@ -48,6 +49,7 @@ public class GoodsServiceImpl implements IGoodsService{
 			{
 				myGoods.setSupplierId(goods.getSupplierId());
 			}
+			goodsRepository.save(myGoods);
 		}
 		return id;
 	}

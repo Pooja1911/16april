@@ -37,6 +37,7 @@ public class SupplierServiceImpl implements ISupplierService {
 			{
 				supp.setQuantityOrder(supplier.getQuantityOrder());
 			}
+			 supplierRepository.save(supp);
 		}
 		
 		
