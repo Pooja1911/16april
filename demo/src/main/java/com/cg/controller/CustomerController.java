@@ -104,20 +104,18 @@ public class CustomerController {
 			return new ResponseEntity<String>(msg, HttpStatus.OK);
 		}
 	}
-	
-	
-@PutMapping("/customerupdate")
-public ResponseEntity<?> multipleupdate(@RequestBody final List<Customer> customer)
-{
-	try {
-		List<Customer> list=customerService.updateMultipleCustomer(customer);
-		return new ResponseEntity<List<Customer>>(list, HttpStatus.OK);
-	} catch (ConsumerException e) {
-		// TODO Auto-generated catch block
-		
-		return new ResponseEntity<>( HttpStatus.OK);
+
+	@PutMapping("/customerupdate")
+	public ResponseEntity<?> multipleupdate(@RequestBody final List<Customer> customer) {
+		try {
+			List<Customer> list = customerService.updateMultipleCustomer(customer);
+			return new ResponseEntity<List<Customer>>(list, HttpStatus.OK);
+		} catch (ConsumerException e) {
+			// TODO Auto-generated catch block
+
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
 	}
-}
 
 	@PostMapping("/goodsCreate")
 	public ResponseEntity<Goods> createGoods(@RequestBody final Goods goods) {

@@ -3,20 +3,19 @@ package com.cg.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.hibernate.annotations.common.util.impl.LoggerFactory;
-import org.hibernate.query.criteria.internal.predicate.ExistsPredicate;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cg.ConsumerMain;
+
 import com.cg.Exception.ConsumerException;
 import com.cg.dao.CustomerRepository;
 import com.cg.model.Customer;
 
 @Service("customerService")
 public class CustomerServiceImpl implements ICustomerService {
-	//final  Logger LOGGER = Logger.getLogger(ConsumerMain.class.getName());
+	final  Logger LOGGER = LoggerFactory.getLogger(CustomerServiceImpl.class);
 	@Autowired
 	public CustomerRepository customerRepository;
 
@@ -38,7 +37,7 @@ public class CustomerServiceImpl implements ICustomerService {
 		// TODO Auto-generated method stub
 		List<Customer> list = customerRepository.findAll();
 		if (list.isEmpty()) {
-			throw new ConsumerException("No matching records are found");
+			throw new ConsumerException("No matching record found");
 		} else {
 			return list;
 		}
@@ -52,6 +51,7 @@ public class CustomerServiceImpl implements ICustomerService {
 			Customer cust = customerRepository.getOne(id);
 			if (customerReq.getPaymentMode() != null) {
 				cust.setPaymentMode(customerReq.getPaymentMode());
+				LOGGER.info("hello");
 			}
 			if (customerReq.getCustomerAddress() != null) {
 				cust.setCustomerAddress(customerReq.getCustomerAddress());
