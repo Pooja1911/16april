@@ -17,6 +17,7 @@ import com.cg.Exception.ConsumerException;
 import com.cg.model.Customer;
 import com.cg.model.Goods;
 import com.cg.model.Supplier;
+import com.cg.myAnnotation.Pooja;
 import com.cg.service.ICustomerService;
 import com.cg.service.IGoodsService;
 import com.cg.service.ISupplierService;
@@ -30,7 +31,7 @@ public class CustomerController {
 	IGoodsService goodsService;
 	@Autowired
 	ISupplierService supplierService;
-
+    
 	@PostMapping("/customerCreate")
 	public ResponseEntity<?> createCustomer(@RequestBody final Customer customer) {
 
@@ -108,8 +109,10 @@ public class CustomerController {
 	@PutMapping("/customerupdate")
 	public ResponseEntity<?> multipleupdate(@RequestBody final List<Customer> customer) {
 		try {
+			System.out.println("customerRequest"+customer);
 			List<Customer> list = customerService.updateMultipleCustomer(customer);
 			return new ResponseEntity<List<Customer>>(list, HttpStatus.OK);
+			
 		} catch (ConsumerException e) {
 			// TODO Auto-generated catch block
 
