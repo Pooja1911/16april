@@ -1,40 +1,51 @@
 package com.cg.bank.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
- * author name : Pooja Jain
- * application name : Transaction in bank
- * description : to perform multiple transcation
+ * author name : Pooja Jain application name : Transaction in bank description :
+ * to perform multiple transcation
  */
 
-@Table(name="bank_details")
+@Table(name = "bank_details")
 @Entity
 public class Bank {
-	
+
 	@Id
-	@SequenceGenerator(name="bank_seq", initialValue=1, allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="bank_seq")
-	@Column(name="bank_id")
+	@SequenceGenerator(name = "bank_seq", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bank_seq")
+	@Column(name = "id")
 	private Long bankId;
+
+	@Column(name = "amount")
+	private float amount;
+
 	
-	 /**
-	 * method name : getBankId()
-	 * return type : Long
-	 * decription : it we get all bank ids
+	public Bank() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * method name : getBankId() return type : Long decription : it we get all bank
+	 * ids
 	 */
 	public Long getBankId() {
 		return bankId;
 	}
 
 	/**
-	 * @param bankId the bankId to set
+	 * @param bankId
+	 *            the bankId to set
 	 */
 	public void setBankId(Long bankId) {
 		this.bankId = bankId;
@@ -48,24 +59,21 @@ public class Bank {
 	}
 
 	/**
-	 * @param amount the amount to set
+	 * @param amount
+	 *            the amount to set
 	 */
 	public void setAmount(float amount) {
 		this.amount = amount;
 	}
 
-	@Column(name="amount")
-	 private float amount;
-public Bank() {
-	// TODO Auto-generated constructor stub
-}
-
-/* (non-Javadoc)
- * @see java.lang.Object#toString()
- */
-@Override
-public String toString() {
-	return "Bank [bankId=" + bankId + ", amount=" + amount + "]";
-}
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Bank [bankId=" + bankId + ", amount=" + amount + "]";
+	}
 
 }

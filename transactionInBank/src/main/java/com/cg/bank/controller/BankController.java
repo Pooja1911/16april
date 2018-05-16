@@ -20,23 +20,21 @@ public class BankController {
 
 	@Autowired
 	private IBankService bankService;
+
 	@PostMapping("/bankCreate")
 	public ResponseEntity<?> createBank(@RequestBody final Bank bank) {
 
 		Bank bank1;
-			bank1 = bankService.createBank(bank);
-			return new ResponseEntity<Bank>(bank1, HttpStatus.CREATED);
-		
-			
+		bank1 = bankService.createBank(bank);
+		return new ResponseEntity<Bank>(bank1, HttpStatus.CREATED);
+
 	}
-	
-	
-	
 
 	@GetMapping("/getBankDetails")
 	public ResponseEntity<?> retrive() {
 		List<Bank> list;
-			list = bankService.getBankDetails();
-			return new ResponseEntity<List<Bank>>(list, HttpStatus.OK);
-}
+		list = bankService.getBankDetails();
+		return new ResponseEntity<List<Bank>>(list, HttpStatus.OK);
+	}
+
 }

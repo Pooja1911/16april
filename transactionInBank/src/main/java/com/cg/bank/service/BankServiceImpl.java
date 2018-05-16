@@ -1,6 +1,7 @@
 package com.cg.bank.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,12 @@ public class BankServiceImpl implements IBankService{
 	public List<Bank> getBankDetails() {
 		// TODO Auto-generated method stub
 		return bankRepository.findAll();
+	}
+	
+	@Override
+	public Optional<Bank> getBankDetailsByID(long ID) {
+		// TODO Auto-generated method stub
+		return bankRepository.findById(ID);
 	}
 
 }
