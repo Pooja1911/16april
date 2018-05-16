@@ -28,7 +28,7 @@ public class Bank {
 	private Long bankId;
 
 	@Column(name = "amount")
-	private float amount;
+	private Float amount;
 
 	
 	public Bank() {
@@ -54,7 +54,7 @@ public class Bank {
 	/**
 	 * @return the amount
 	 */
-	public float getAmount() {
+	public Float getAmount() {
 		return amount;
 	}
 
@@ -62,7 +62,7 @@ public class Bank {
 	 * @param amount
 	 *            the amount to set
 	 */
-	public void setAmount(float amount) {
+	public void setAmount(Float amount) {
 		this.amount = amount;
 	}
 

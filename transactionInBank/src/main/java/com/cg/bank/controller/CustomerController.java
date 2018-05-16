@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.bank.entities.Bank;
@@ -18,6 +19,7 @@ import com.cg.bank.service.ICustomerService;
 import com.cg.bank.vo.CreateCustomerRequest;
 
 @RestController
+@RequestMapping("/apple")
 public class CustomerController {
 	@Autowired
 	private ICustomerService customerService;
@@ -28,7 +30,6 @@ public class CustomerController {
 	public ResponseEntity<?> createCustomer(@RequestBody final CreateCustomerRequest createCustomerRequest) {
 		Customer response;
 		Optional<Bank> bank = bankService.getBankDetailsByID(createCustomerRequest.getBankID());
-		System.out.println("Optional >>>>" + bank);
 		if (bank.isPresent()) {
 			Customer cust = createCustomerRequest.getCustomer();
 			cust.setBank(bank.get());
@@ -42,9 +43,27 @@ public class CustomerController {
 	}
 
 	@GetMapping("/getCustomerDetails/{id}")
-	public ResponseEntity<?> getCustomer(@PathVariable Long id) {
-		Customer cust;
-		cust = customerService.getCustomerDetails(id);
+	public ResponseEntity<Customer> getCustomer(@PathVariable Long id) {
+		Customer cust= customerService.getCustomerDetails(id);
+		System.out.println(">>>>>>>>>>>>>>" + cust);
+		
+		return new ResponseEntity<Customer>(cust, HttpStatus.OK);
+	}
+	
+	@GetMapping("/getCustomer/{id}")
+	public Customer getCustomerSD(@PathVariable Long id) {
+		Customer cust= customerService.getCustomerDetails(id);
+		System.out.println(">>>>>>>>>>>>>>" + cust);
+		
+		return cust;
+	}
+	
+	@GetMapping("/customerTest")
+	public ResponseEntity<Customer> getCustomerEm() {
+		Customer cust = new Customer(1212L, "", 1213L, null);
+		
+		System.out.println(">>>>>>>>>>>>>>>>>>>"+cust);
+		
 		return new ResponseEntity<Customer>(cust, HttpStatus.OK);
 	}
 

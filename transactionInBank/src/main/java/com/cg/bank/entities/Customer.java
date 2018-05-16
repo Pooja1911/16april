@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -17,20 +18,43 @@ import javax.persistence.Table;
 @Entity
 public class Customer {
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", pin=" + pin + ", bank="
+				+ bank + "]";
+	}
+
 	@Id
 	@SequenceGenerator(name = "customer_seq", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_seq")
-	@Column(name = "customer_id")
+	@Column(name = "id")
 	private Long customerId;
 	@Column(name = "customer_name")
 	private String customerName;
 	@Column(name = "pin")
-	private long pin;
+	private Long pin;
 
-	@ManyToOne(targetEntity = Bank.class)
+	@ManyToOne
 	private Bank bank;
 	
 	
+	
+	/**
+	 * @param customerId
+	 * @param customerName
+	 * @param pin
+	 * @param bank
+	 */
+	public Customer(Long customerId, String customerName, Long pin, Bank bank) {
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.pin = pin;
+		this.bank = bank;
+	}
+
 	public Customer() {
 		// TODO Auto-generated constructor stub
 	}
@@ -68,7 +92,7 @@ public class Customer {
 	/**
 	 * @return the pin
 	 */
-	public long getPin() {
+	public Long getPin() {
 		return pin;
 	}
 
@@ -76,7 +100,7 @@ public class Customer {
 	 * @param pin
 	 *            the pin to set
 	 */
-	public void setPin(long pin) {
+	public void setPin(Long pin) {
 		this.pin = pin;
 	}
 
