@@ -21,7 +21,7 @@ public class ATM {
 	private Long ATMId;
 	@Column(name="amount")
 	private BigDecimal amount;
-	@Column(name="bank_id")
+	@Column(name="id")
 	private Long bankId;
 	/**
 	 * @return the aTMId
