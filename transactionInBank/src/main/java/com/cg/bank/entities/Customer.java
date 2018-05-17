@@ -1,31 +1,21 @@
 package com.cg.bank.entities;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+/**
+ * author name : Pooja Jain application name : Transaction in bank description :
+ * to perform multiple transcation
+ */
 @Table(name = "customer_details")
 @Entity
 public class Customer {
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", pin=" + pin + ", bank="
-				+ bank + "]";
-	}
 
 	@Id
 	@SequenceGenerator(name = "customer_seq", initialValue = 1, allocationSize = 1)
@@ -37,82 +27,73 @@ public class Customer {
 	@Column(name = "pin")
 	private Long pin;
 
-	@ManyToOne
+	// relational mapping of bank to customer
+	@ManyToOne(targetEntity = Bank.class)
 	private Bank bank;
-	
-	
-	
-	/**
-	 * @param customerId
-	 * @param customerName
-	 * @param pin
-	 * @param bank
-	 */
-	public Customer(Long customerId, String customerName, Long pin, Bank bank) {
-		this.customerId = customerId;
-		this.customerName = customerName;
-		this.pin = pin;
-		this.bank = bank;
-	}
 
 	public Customer() {
 		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @return the customerId
+	 * method name : getCustomerId method returnTypr : Long method description : to
+	 * get customer id
 	 */
 	public Long getCustomerId() {
 		return customerId;
 	}
 
 	/**
-	 * @param customerId
-	 *            the customerId to set
+	 * method name : setCustomerId method parameter : Long method description : it
+	 * will set customerId
 	 */
-	public void setCustomerId(Long customerId) {
+	public void setCustomerId(final Long customerId) {
 		this.customerId = customerId;
 	}
 
 	/**
-	 * @return the customerName
+	 * method Name : getCustomerName method return type : String method description
+	 * : it will get he customer name
 	 */
 	public String getCustomerName() {
 		return customerName;
 	}
 
 	/**
-	 * @param customerName
-	 *            the customerName to set
+	 * method name : setCustomerName method parameter : String method description :
+	 * it will set customerName
 	 */
-	public void setCustomerName(String customerName) {
+	public void setCustomerName(final String customerName) {
 		this.customerName = customerName;
 	}
 
 	/**
-	 * @return the pin
+	 * method Name : getPin method return type : Long method description : it will
+	 * get he pin
 	 */
 	public Long getPin() {
 		return pin;
 	}
 
 	/**
-	 * @param pin
-	 *            the pin to set
+	 * method name : setPin method parameter : Long method description : it will set
+	 * pin
 	 */
-	public void setPin(Long pin) {
+	public void setPin(final Long pin) {
 		this.pin = pin;
 	}
 
-	
-
 	/**
-	 * @param bank
-	 *            the bank to set
+	 * method name : setBank method parameter : Bank method description : it will
+	 * set Bank
 	 */
-	public void setBank(Bank bank) {
+	public void setBank(final Bank bank) {
 		this.bank = bank;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", pin=" + pin + ", bank="
+				+ bank + "]";
+	}
 }

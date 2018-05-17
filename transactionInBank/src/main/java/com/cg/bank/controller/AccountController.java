@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.bank.Exception.BankException;
 import com.cg.bank.entities.Account;
 import com.cg.bank.entities.Bank;
 import com.cg.bank.entities.Customer;
@@ -18,48 +19,96 @@ import com.cg.bank.service.IAccountService;
 import com.cg.bank.service.IBankService;
 import com.cg.bank.service.ICustomerService;
 import com.cg.bank.vo.AccountRequest;
-import com.cg.bank.vo.CreateCustomerRequest;
+import com.cg.bank.vo.AccountTransaction;
 
 @RestController
 public class AccountController {
-	
-	@Autowired 
+
+	@Autowired
 	IAccountService accountService;
 	@Autowired
 	ICustomerService customerService;
-	@Autowired 
+	@Autowired
 	IBankService bankService;
-	
+	String message = null;
+
 	@PostMapping("/accountCreate")
 	public ResponseEntity<?> createAccount(@RequestBody final AccountRequest accountRe) {
-		Account response=null;
-		System.out.println(">>>before"+accountRe.getBankId());
-		Optional<Bank> bank = bankService.getBankDetailsByID(accountRe.getBankId());
-		System.out.println(">>>after"+accountRe.getBankId());
-		if (bank.isPresent()) {
-		 Customer cust=customerService.getCustomerDetails(accountRe.getCustomerId());
-		 Account acc=accountRe.getAccount();
-		 acc.setBank(bank.get());
-		 acc.setCustomer(cust);
-			response = accountService.createAccount(acc);
-			System.out.println(response);
-				
-		 System.out.println("oustsdsa"+response);
-		 return new ResponseEntity<Account>(response, HttpStatus.CREATED);
- 
-		}else {
-			return new ResponseEntity<String>("no such bank exsit", HttpStatus.OK);
+		Account response = null;
+		Optional<Bank> bank;
+		try {
+			bank = bankService.getBankDetailsByID(accountRe.getBankId());
+
+			if (bank.isPresent()) {
+				Customer cust;
+				try {
+					cust = customerService.getCustomerDetails(accountRe.getCustomerId());
+
+					final Account acc = accountRe.getAccount();
+					acc.setBank(bank.get());
+					acc.setCustomer(cust);
+					try {
+						response = accountService.createAccount(acc);
+					} catch (BankException e) {
+						message = e.getMessage();
+						return new ResponseEntity<String>(message, HttpStatus.OK);
+					}
+				} catch (BankException e) {
+					message = e.getMessage();
+					return new ResponseEntity<String>(message, HttpStatus.OK);
+				}
+			}
+
+			return new ResponseEntity<Account>(response, HttpStatus.CREATED);
+		} catch (BankException e) {
+			message = e.getMessage();
+			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 
 	}
 
-	@GetMapping("/getCustomerDetails/{id}")
-	public ResponseEntity<Customer> getCustomer(@PathVariable Long id) {
-		Customer cust= customerService.getCustomerDetails(id);
-		System.out.println(">>>>>>>>>>>>>>" + cust);
-		
-		return new ResponseEntity<Customer>(cust, HttpStatus.OK);
+	@GetMapping("/accountDetails/{id}")
+	public ResponseEntity<?> getAccount(@PathVariable Long id) {
+		Account acc;
+		try {
+			acc = accountService.getAccountDetails(id);
+			return new ResponseEntity<Account>(acc, HttpStatus.OK);
+		} catch (BankException e) {
+			message = e.getMessage();
+			return new ResponseEntity<String>(message, HttpStatus.OK);
+		}
+
+	}
+
+	
+
+	@PostMapping("/accountDeposit")
+	public ResponseEntity<?> depositAccount(@RequestBody final AccountTransaction account)
+	{
+		try {
+			String msg=accountService.depositMoney(account);
+			return new ResponseEntity<String>(msg, HttpStatus.OK);
+			
+		} catch (BankException e) {
+			message=e.getMessage();
+			return new ResponseEntity<String>(message, HttpStatus.OK);
+		}
 	}
 	
+	
+	
+
+	@PostMapping("/accountwithdraw")
+	public ResponseEntity<?> withdrawAccount(@RequestBody final AccountTransaction account)
+	{
+		try {
+			String msg=accountService.withdrawlMoney(account);
+			return new ResponseEntity<String>(msg, HttpStatus.OK);
+			
+		} catch (BankException e) {
+			message=e.getMessage();
+			return new ResponseEntity<String>(message, HttpStatus.OK);
+		}
+	}
 
 }

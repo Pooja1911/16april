@@ -1,5 +1,7 @@
 package com.cg.bank.entities;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +20,7 @@ public class ATM {
 	@Column(name="atm_id")
 	private Long ATMId;
 	@Column(name="amount")
-	private float amount;
+	private BigDecimal amount;
 	@Column(name="bank_id")
 	private Long bankId;
 	/**
@@ -30,19 +32,19 @@ public class ATM {
 	/**
 	 * @param aTMId the aTMId to set
 	 */
-	public void setATMId(Long aTMId) {
+	public void setATMId(final Long aTMId) {
 		ATMId = aTMId;
 	}
 	/**
 	 * @return the amount
 	 */
-	public float getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 	/**
 	 * @param amount the amount to set
 	 */
-	public void setAmount(float amount) {
+	public void setAmount(final BigDecimal amount) {
 		this.amount = amount;
 	}
 	/**
@@ -54,7 +56,7 @@ public class ATM {
 	/**
 	 * @param bankId the bankId to set
 	 */
-	public void setBankId(Long bankId) {
+	public void setBankId(final Long bankId) {
 		this.bankId = bankId;
 	}
 	

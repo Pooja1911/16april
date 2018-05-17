@@ -43,26 +43,26 @@ public class Account {
 		/**
 	 * @param customer the customer to set
 	 */
-	public void setCustomer(Customer customer) {
+	public void setCustomer(final Customer customer) {
 		this.customer = customer;
 	}
 	
 	/**
 	 * @param bank the bank to set
 	 */
-	public void setBank(Bank bank) {
+	public void setBank( final Bank bank) {
 		this.bank = bank;
 	}
 	/**
 	 * @param accountId the accountId to set
 	 */
-	public void setAccountId(Long accountId) {
+	public void setAccountId( final Long accountId) {
 		this.accountId = accountId;
 	}
 	/**
 	 * @param amount the amount to set
 	 */
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(final BigDecimal amount) {
 		this.amount = amount;
 	}
 	/**
@@ -75,6 +75,14 @@ public class Account {
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Account [accountId=" + accountId + ", amount=" + amount + ", customer=" + customer + ", bank=" + bank
+				+ "]";
+	}
 	
 	
 	
