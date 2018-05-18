@@ -3,6 +3,8 @@ package com.cg.bank.service;
 import java.math.BigDecimal;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +57,7 @@ public class AccountServiceImpl implements IAccountService {
 	 * AccountTransaction class description : this method will return a string if
 	 * successfully amount is added and add to transaction list
 	 */
+	@Transactional
 	@Override
 	public String depositMoney(final AccountTransaction account) throws BankException {
 		final Optional<Account> acc1 = accountRepository.findById(account.getAccountId());
@@ -88,6 +91,7 @@ public class AccountServiceImpl implements IAccountService {
 	 * AccountTransaction class description : this method will return a string if
 	 * successfully withdraw and add to transaction list
 	 */
+	@Transactional
 	@Override
 	public String withdrawlMoney(final AccountTransaction account) throws BankException {
 		// TODO Auto-generated method stub
@@ -126,7 +130,7 @@ public class AccountServiceImpl implements IAccountService {
 	@Override
 	public Account getAccountDetails(final Long id) throws BankException {
 		// TODO Auto-generated method stub
-		Account account = accountRepository.findById(id).get();
+		Account account =  accountRepository.findById(id).get();
 		if (account != null) {
 			return account;
 		} else {

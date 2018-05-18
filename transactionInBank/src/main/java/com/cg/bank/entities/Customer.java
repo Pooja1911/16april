@@ -96,4 +96,18 @@ public class Customer {
 		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", pin=" + pin + ", bank="
 				+ bank + "]";
 	}
+
+	/**
+	 * @param customerId
+	 * @param customerName
+	 * @param pin
+	 */
+	public Customer(Long customerId, String customerName, Long pin) {
+		super();
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.pin = pin;
+	}
+	
+	
 }

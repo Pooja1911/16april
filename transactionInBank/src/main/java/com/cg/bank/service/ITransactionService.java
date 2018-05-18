@@ -5,9 +5,22 @@ import java.util.List;
 import com.cg.bank.Exception.BankException;
 import com.cg.bank.entities.Transaction;
 
+/**
+ * @author Pooja jain
+ *
+ */
 public interface ITransactionService {
-	public Transaction createTransaction(Transaction trans) throws BankException;
+	/**
+	 * method name : createTransaction return type : Transaction object parameter
+	 * :Transaction description : this method will return a transaction which is
+	 * created
+	 */
+	Transaction createTransaction(final Transaction trans) throws BankException;
 
-	public List<Transaction> generateTransactionReport() throws BankException;
+	/**
+	 * method name : generateTransactionReport return type : List<Transaction>
+	 * Object description : this method will return a list which of transactions
+	 */
+	List<Transaction> generateTransactionReport() throws BankException;
 
 }

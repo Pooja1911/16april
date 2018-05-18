@@ -26,6 +26,9 @@ import com.cg.bank.vo.WithrawMoneyReq;
 public class ATMServiceImpl implements IATMService {
 
 	final Logger LOGGER = LoggerFactory.getLogger(ATMServiceImpl.class);
+	/**
+	 * autowiring atmrepository to atmservcie
+	 */
 	@Autowired
 	private ATMRepository atmRepo;
 	@Autowired
@@ -38,7 +41,7 @@ public class ATMServiceImpl implements IATMService {
 	private TransactionRepository trans;
 
 	@Override
-	public ATM createATM(ATM atm) throws BankException {
+	public ATM createATM(final ATM atm) throws BankException {
 		// TODO Auto-generated method stub
 		ATM atm1 = atmRepo.save(atm);
 		if (atm1 != null) {
@@ -49,7 +52,7 @@ public class ATMServiceImpl implements IATMService {
 	}
 
 	@Override
-	public String addMoneyFromBank(AddMoneyReq atmreq) throws BankException {
+	public String addMoneyFromBank(final AddMoneyReq atmreq) throws BankException {
 		// TODO Auto-generated method stub
 		Optional<ATM> atm = atmRepo.findById(atmreq.getAtmId());
 		if (atm.isPresent()) {
@@ -74,14 +77,14 @@ public class ATMServiceImpl implements IATMService {
 				}
 			}
 		}
-		return "added";
+		return "amount added";
 	}
 
 	@Override
-	public String withrawMoney(WithrawMoneyReq withdraw) throws BankException {
+	public String withrawMoney(final WithrawMoneyReq withdraw) throws BankException {
 		Optional<ATM> atm = atmRepo.findById(withdraw.getAtmId());
 		if (atm.isPresent()) {
-			ATM atm1 = atm.get();
+			final ATM atm1 = atm.get();
 			BigDecimal amount = atm1.getAmount();
 			if (amount.compareTo(withdraw.getAmount()) == 1) {
 				Account account = accountRepo.findById(withdraw.getAccountId()).get();
@@ -103,7 +106,7 @@ public class ATMServiceImpl implements IATMService {
 				}
 			}
 		}
-		return "deducted";
+		return "amount deducted";
 	}
 
 }

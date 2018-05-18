@@ -7,10 +7,22 @@ import com.cg.bank.Exception.BankException;
 import com.cg.bank.entities.Bank;
 
 public interface IBankService {
-	public Bank createBank(Bank bank) throws BankException;
+	/**
+	 * method name : createBank return type : Bank object parameter :object of ATM
+	 * description : this method will return a bank which is created
+	 */
+	Bank createBank(final Bank bank) throws BankException;
 
-	public List<Bank> getBankDetails() throws BankException;
+	/**
+	 * method name : getBankDetails return type : List<Bank> description : this
+	 * method will return a list of all banks
+	 */
+	List<Bank> getBankDetails() throws BankException;
 
-	Optional<Bank> getBankDetailsByID(long ID) throws BankException;
+	/**
+	 * method name : getBankDetailsByID return type : Optional parameter :long
+	 * description : this method will return a bank of given id
+	 */
+	Optional<Bank> getBankDetailsByID(final long Id) throws BankException;
 
 }

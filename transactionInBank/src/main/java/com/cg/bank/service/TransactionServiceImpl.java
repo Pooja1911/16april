@@ -31,7 +31,7 @@ public class TransactionServiceImpl implements ITransactionService{
 	@Override
 	public List<Transaction> generateTransactionReport() throws BankException {
 		// TODO Auto-generated method stub
-		List<Transaction> tran=transact.findAll();
+		final List<Transaction> tran=transact.findAll();
 		if(tran.isEmpty())
 		{
 			throw new BankException("no list generated");
