@@ -21,7 +21,13 @@ public class BankController {
 
 	@Autowired
 	private IBankService bankService;
-	private  String message=null;
+	private String message = null;
+
+	/*
+	 * method name : createBank return type : responseEntitiy object parameter :
+	 * object of Bank class description : this method will return a created bank
+	 * mapping : post
+	 */
 	@PostMapping("/bankCreate")
 	public ResponseEntity<?> createBank(@RequestBody final Bank bank) {
 
@@ -30,13 +36,16 @@ public class BankController {
 			bank1 = bankService.createBank(bank);
 			return new ResponseEntity<Bank>(bank1, HttpStatus.CREATED);
 		} catch (BankException e) {
-			message=e.getMessage();
+			message = e.getMessage();
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
-		
 
 	}
 
+	/*
+	 * method name : retrive return type : responseEntitiy object description : this
+	 * method will return a list of created bank mapping : get
+	 */
 	@GetMapping("/getBankDetails")
 	public ResponseEntity<?> retrive() {
 		List<Bank> list;
@@ -44,10 +53,10 @@ public class BankController {
 			list = bankService.getBankDetails();
 			return new ResponseEntity<List<Bank>>(list, HttpStatus.OK);
 		} catch (BankException e) {
-		     message=e.getMessage();	
-		     return new ResponseEntity<String>(message, HttpStatus.OK);
+			message = e.getMessage();
+			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
-		
+
 	}
 
 }

@@ -28,6 +28,11 @@ public class CustomerController {
 	private IBankService bankService;
 	private String message = null;
 
+	/*
+	 * method name : createCustomer return type : responseEntitiy object parameter :
+	 * object of CreateCustomerRequest class description : this method will return a
+	 * created customer mapping : post
+	 */
 	@PostMapping("/customerCreate")
 	public ResponseEntity<?> createCustomer(@RequestBody final CreateCustomerRequest createCustomerRequest) {
 		Customer response = null;
@@ -55,6 +60,11 @@ public class CustomerController {
 
 	}
 
+	/*
+	 * method name : getCustomer return type : responseEntitiy object parameter :
+	 * path variable id description : this method will return a created customer of
+	 * specified id mapping : get
+	 */
 	@GetMapping("/getCustomerDetails/{id}")
 	public ResponseEntity<?> getCustomer(@PathVariable Long id) {
 		Customer cust;

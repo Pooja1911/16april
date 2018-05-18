@@ -32,6 +32,11 @@ public class AccountController {
 	IBankService bankService;
 	String message = null;
 
+	/*
+	 * method name : createAccount return type : responseEntitiy object parameter :
+	 * object of AccountRequest class description : this method will return a
+	 * created account mapping : post
+	 */
 	@PostMapping("/accountCreate")
 	public ResponseEntity<?> createAccount(@RequestBody final AccountRequest accountRe) {
 		Account response = null;
@@ -67,6 +72,12 @@ public class AccountController {
 
 	}
 
+	/*
+	 * method name : getAccount return type : responseEntitiy object parameter :
+	 * Path variable of Long type description : this method will return a created
+	 * account of a given id mapping : get
+	 */
+
 	@GetMapping("/accountDetails/{id}")
 	public ResponseEntity<?> getAccount(@PathVariable Long id) {
 		Account acc;
@@ -80,33 +91,38 @@ public class AccountController {
 
 	}
 
-	
+	/*
+	 * method name : depositAccount return type : responseEntitiy object parameter :
+	 * object of AccountTransaction class description : this method will return a
+	 * success String if money is deposited mapping : post
+	 */
 
 	@PostMapping("/accountDeposit")
-	public ResponseEntity<?> depositAccount(@RequestBody final AccountTransaction account)
-	{
+	public ResponseEntity<?> depositAccount(@RequestBody final AccountTransaction account) {
 		try {
-			String msg=accountService.depositMoney(account);
+			String msg = accountService.depositMoney(account);
 			return new ResponseEntity<String>(msg, HttpStatus.OK);
-			
+
 		} catch (BankException e) {
-			message=e.getMessage();
+			message = e.getMessage();
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 	}
-	
-	
-	
+
+	/*
+	 * method name : withdrawAccount return type : responseEntitiy object parameter
+	 * : object of AccountTransaction class description : this method will return a
+	 * success message string if amount is deducted mapping : post
+	 */
 
 	@PostMapping("/accountwithdraw")
-	public ResponseEntity<?> withdrawAccount(@RequestBody final AccountTransaction account)
-	{
+	public ResponseEntity<?> withdrawAccount(@RequestBody final AccountTransaction account) {
 		try {
-			String msg=accountService.withdrawlMoney(account);
+			String msg = accountService.withdrawlMoney(account);
 			return new ResponseEntity<String>(msg, HttpStatus.OK);
-			
+
 		} catch (BankException e) {
-			message=e.getMessage();
+			message = e.getMessage();
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 	}

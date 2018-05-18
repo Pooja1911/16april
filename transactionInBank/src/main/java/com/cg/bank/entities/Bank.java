@@ -31,9 +31,10 @@ public class Bank {
 
 	@Column(name = "amount")
 	private BigDecimal amount;
-  @OneToMany
-  @JoinColumn(name="id", referencedColumnName="id")
-  List<ATM> atmList=new ArrayList();
+	@OneToMany
+	@JoinColumn(name = "id", referencedColumnName = "id")
+	List<ATM> atmList = new ArrayList();
+
 	public Bank() {
 	}
 
@@ -72,6 +73,16 @@ public class Bank {
 	@Override
 	public String toString() {
 		return "Bank [bankId=" + bankId + ", amount=" + amount + "]";
+	}
+
+	/**
+	 * @param bankId
+	 * @param amount
+	 */
+	public Bank(Long bankId, BigDecimal amount) {
+		super();
+		this.bankId = bankId;
+		this.amount = amount;
 	}
 
 }
