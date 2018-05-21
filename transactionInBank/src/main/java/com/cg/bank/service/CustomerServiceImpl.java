@@ -21,6 +21,7 @@ public class CustomerServiceImpl implements ICustomerService {
 		if (custom != null) {
 			return custom;
 		} else {
+			LOGGER.error("No customer is added");
 			throw new BankException("no customer is created");
 		}
 	}
@@ -32,6 +33,7 @@ public class CustomerServiceImpl implements ICustomerService {
 		if (customer != null) {
 			return customer;
 		} else {
+			LOGGER.info("No customer of given id is exist");
 			throw new BankException("no customer of such id exist");
 		}
 

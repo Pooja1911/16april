@@ -21,7 +21,7 @@ public class BankController {
 
 	@Autowired
 	private IBankService bankService;
-	private String message = null;
+
 
 	/*
 	 * method name : createBank return type : responseEntitiy object parameter :
@@ -36,7 +36,7 @@ public class BankController {
 			bank1 = bankService.createBank(bank);
 			return new ResponseEntity<Bank>(bank1, HttpStatus.CREATED);
 		} catch (BankException e) {
-			message = e.getMessage();
+			String message = e.getMessage();
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 
@@ -53,7 +53,7 @@ public class BankController {
 			list = bankService.getBankDetails();
 			return new ResponseEntity<List<Bank>>(list, HttpStatus.OK);
 		} catch (BankException e) {
-			message = e.getMessage();
+			String message = e.getMessage();
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 

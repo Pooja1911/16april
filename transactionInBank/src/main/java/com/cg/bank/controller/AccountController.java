@@ -30,8 +30,7 @@ public class AccountController {
 	ICustomerService customerService;
 	@Autowired
 	IBankService bankService;
-	String message = null;
-
+	
 	/*
 	 * method name : createAccount return type : responseEntitiy object parameter :
 	 * object of AccountRequest class description : this method will return a
@@ -55,18 +54,18 @@ public class AccountController {
 					try {
 						response = accountService.createAccount(acc);
 					} catch (BankException e) {
-						message = e.getMessage();
+						String message = e.getMessage();
 						return new ResponseEntity<String>(message, HttpStatus.OK);
 					}
 				} catch (BankException e) {
-					message = e.getMessage();
+					String message = e.getMessage();
 					return new ResponseEntity<String>(message, HttpStatus.OK);
 				}
 			}
 
 			return new ResponseEntity<Account>(response, HttpStatus.CREATED);
 		} catch (BankException e) {
-			message = e.getMessage();
+			String message = e.getMessage();
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 
@@ -85,7 +84,7 @@ public class AccountController {
 			acc = accountService.getAccountDetails(id);
 			return new ResponseEntity<Account>(acc, HttpStatus.OK);
 		} catch (BankException e) {
-			message = e.getMessage();
+			String message = e.getMessage();
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 
@@ -100,11 +99,11 @@ public class AccountController {
 	@PostMapping("/accountDeposit")
 	public ResponseEntity<?> depositAccount(@RequestBody final AccountTransaction account) {
 		try {
-			String msg = accountService.depositMoney(account);
-			return new ResponseEntity<String>(msg, HttpStatus.OK);
+			Long custId = accountService.depositMoney(account);
+			return new ResponseEntity<Long>(custId, HttpStatus.OK);
 
 		} catch (BankException e) {
-			message = e.getMessage();
+			String message = e.getMessage();
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 	}
@@ -118,11 +117,11 @@ public class AccountController {
 	@PostMapping("/accountwithdraw")
 	public ResponseEntity<?> withdrawAccount(@RequestBody final AccountTransaction account) {
 		try {
-			String msg = accountService.withdrawlMoney(account);
-			return new ResponseEntity<String>(msg, HttpStatus.OK);
+			Long customerId = accountService.withdrawlMoney(account);
+			return new ResponseEntity<Long>(customerId, HttpStatus.OK);
 
 		} catch (BankException e) {
-			message = e.getMessage();
+			String message = e.getMessage();
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 	}

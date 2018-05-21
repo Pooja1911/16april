@@ -25,6 +25,7 @@ public class BankServiceImpl implements IBankService {
 		if (bank1 != null) {
 			return bank1;
 		} else {
+			LOGGER.error("No bank is added");
 			throw new BankException("No Bank is Added");
 		}
 	}
@@ -33,6 +34,7 @@ public class BankServiceImpl implements IBankService {
 	public List<Bank> getBankDetails() throws BankException {
 		final List<Bank> list = bankRepository.findAll();
 		if (list.isEmpty()) {
+			LOGGER.error("No banks found");
 			throw new BankException("No bank found");
 		} else {
 			return list;
@@ -40,12 +42,13 @@ public class BankServiceImpl implements IBankService {
 	}
 
 	@Override
-	public Optional<Bank> getBankDetailsByID(long ID) throws BankException {
+	public Optional<Bank> getBankDetailsByID(final long ID) throws BankException {
 		// TODO Auto-generated method stub
 		final Optional<Bank> bank = bankRepository.findById(ID);
 		if (bank.isPresent()) {
 			return bank;
 		} else {
+			LOGGER.error("no bank of such id exist");
 			throw new BankException("No such bank found");
 		}
 	}

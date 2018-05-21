@@ -17,7 +17,6 @@ import com.cg.bank.service.ITransactionService;
 public class TransactionController {
 	@Autowired
 	private ITransactionService transactionService;
-	private String message;
 
 	/*
 	 * method name : retriveTrans return type : responseEntitiy object description :
@@ -30,7 +29,7 @@ public class TransactionController {
 			list = transactionService.generateTransactionReport();
 			return new ResponseEntity<List<Transaction>>(list, HttpStatus.OK);
 		} catch (BankException e) {
-			message = e.getMessage();
+			String message = e.getMessage();
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 	}

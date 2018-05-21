@@ -29,12 +29,9 @@ public class AccountServiceImpl implements IAccountService {
 	@Autowired
 	private TransactionRepository trans;
 	@Autowired
-	private CustomerRepository customerRepo;
-
+	private ICustomerService customerService;
 	@Autowired
-	Transaction transaction;
-	@Autowired
-	private BankRepository bankRepo;
+	private IBankService bankService;
 	private BigDecimal balance;
 
 	/*
@@ -46,8 +43,10 @@ public class AccountServiceImpl implements IAccountService {
 	public Account createAccount(final Account account) throws BankException {
 		final Account acc = accountRepository.save(account);
 		if (acc != null) {
+			LOGGER.info("account created");
 			return acc;
 		} else {
+			LOGGER.error("no account is created");
 			throw new BankException("No account is created");
 		}
 	}
@@ -59,31 +58,42 @@ public class AccountServiceImpl implements IAccountService {
 	 */
 	@Transactional
 	@Override
-	public String depositMoney(final AccountTransaction account) throws BankException {
+	public Long depositMoney(final AccountTransaction account) throws BankException {
+		if (account.getAmount().compareTo(BigDecimal.ZERO) > 0) {
 		final Optional<Account> acc1 = accountRepository.findById(account.getAccountId());
 		if (acc1.isPresent()) {
 			final Account acc = acc1.get();
 			balance = acc.getAmount();
 			balance = balance.add(account.getAmount());
 			acc.setAmount(balance);
-			final Optional<Bank> bank = bankRepo.findById(account.getBankId());
+			final Optional<Bank> bank = bankService.getBankDetailsByID(account.getBankId());
 			if (bank.isPresent()) {
 				final Bank bank1 = bank.get();
 				bank1.setAmount(balance);
-				bankRepo.save(bank1);
+				bankService.createBank(bank1);
+			}else
+			{   LOGGER.error("no bank id present");
+				throw new BankException("no bank is present of given id");
 			}
 			Transaction transaction = new Transaction();
 			transaction.setAccount(acc);
 			transaction.setAmount(acc.getAmount());
-			final Customer customer = customerRepo.findById(account.getCustomerId()).get();
+			final Customer customer = customerService.getCustomerDetails(account.getCustomerId());
 			transaction.setCustomer(customer);
 			transaction.setTransactionType("credit");
 			trans.save(transaction);
-			return "data is added";
+			LOGGER.info("AMOUNT IS ADDED");
+			return account.getCustomerId();
 		} else {
+			LOGGER.error("no amount is deposited");
 			throw new BankException("zero amount  deposited");
 		}
-
+		}
+		else
+		{
+			LOGGER.error("-ve amount is not possible");
+			throw new BankException("negative amount is not possible");
+		}
 	}
 
 	/*
@@ -93,33 +103,52 @@ public class AccountServiceImpl implements IAccountService {
 	 */
 	@Transactional
 	@Override
-	public String withdrawlMoney(final AccountTransaction account) throws BankException {
+	public Long withdrawlMoney(final AccountTransaction account) throws BankException {
 		// TODO Auto-generated method stub
+		if (account.getAmount().compareTo(BigDecimal.ZERO) > 0) {
 		Optional<Account> acc1 = accountRepository.findById(account.getAccountId());
 		if (acc1.isPresent()) {
-			final Account account1 = acc1.get();
+			final Account account1 = acc1.get();                                                                     ;
 			balance = account1.getAmount();
 			balance = balance.subtract(account.getAmount());
 			account1.setAmount(balance);
-			final Optional<Bank> bank = bankRepo.findById(account.getBankId());
+			final Optional<Bank> bank = bankService.getBankDetailsByID(account.getAccountId());
 			if (bank.isPresent()) {
 				final Bank bank1 = bank.get();
 				bank1.setAmount(balance);
-				bankRepo.save(bank1);
+				bankService.createBank(bank1);
 
-				// Transaction transaction=new Transaction();
+				Transaction transaction=new Transaction();
 				transaction.setAccount(account1);
 				transaction.setAmount(account1.getAmount());
-				final Customer customer = customerRepo.findById(account.getCustomerId()).get();
+				final Customer customer = customerService.getCustomerDetails(account.getCustomerId());
+				if(customer!=null)
+				{
 				transaction.setCustomer(customer);
 				transaction.setTransactionType("debit");
 				trans.save(transaction);
+				LOGGER.info("amount is deducted");
+				return account.getCustomerId();
+				}
+				else
+				{ LOGGER.error("no customer exist");
+					throw new BankException("No customer of such occunct exsit");
+				}
+			}else
+			{LOGGER.error("no account exist");
+				throw new BankException("No such account exist");
 			}
-			return "amount is deducted";
+			
 		} else {
+			LOGGER.error("not  enough amount to withdraw");
 			throw new BankException("No amount withdraw");
 		}
-
+		}
+		else
+		{
+			LOGGER.error("-ve value is not posssible");
+			throw new BankException("negative amount is not possible");
+		}
 	}
 
 	/*
@@ -132,8 +161,10 @@ public class AccountServiceImpl implements IAccountService {
 		// TODO Auto-generated method stub
 		Account account =  accountRepository.findById(id).get();
 		if (account != null) {
+			LOGGER.info("account retrived");
 			return account;
 		} else {
+			LOGGER.error("no such id exist");
 			throw new BankException("no such element found");
 		}
 	}

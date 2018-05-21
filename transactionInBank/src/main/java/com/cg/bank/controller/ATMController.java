@@ -26,7 +26,7 @@ public class ATMController {
 	@Autowired
 	private IBankService bankService;
 
-	private String message;
+
 
 	/*
 	 * method name : createATM return type : responseEntitiy object parameter :
@@ -44,7 +44,7 @@ public class ATMController {
 			atm1 = atmService.createATM(atm2);
 			return new ResponseEntity<ATM>(atm1, HttpStatus.CREATED);
 		} catch (BankException e) {
-			message = e.getMessage();
+			String message = e.getMessage();
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 
@@ -62,7 +62,7 @@ public class ATMController {
 			final String str = atmService.addMoneyFromBank(atm);
 			return new ResponseEntity<String>(str, HttpStatus.OK);
 		} catch (BankException e) {
-			message = e.getMessage();
+			String message = e.getMessage();
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 
@@ -77,10 +77,10 @@ public class ATMController {
 	public ResponseEntity<?> withdrawFromAtm(@RequestBody final WithrawMoneyReq atm) {
 
 		try {
-			final String str = atmService.withrawMoney(atm);
-			return new ResponseEntity<String>(str, HttpStatus.OK);
+			final Long id = atmService.withrawMoney(atm);
+			return new ResponseEntity<Long>(id, HttpStatus.OK);
 		} catch (BankException e) {
-			message = e.getMessage();
+			String message = e.getMessage();
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 

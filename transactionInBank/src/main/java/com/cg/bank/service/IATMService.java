@@ -27,6 +27,6 @@ public interface IATMService {
 	 * WithdrawMoneyReq description : this method will return a string if
 	 * successfully money withraw
 	 */
-	String withrawMoney(final WithrawMoneyReq withdraw) throws BankException;
+	Long withrawMoney(final WithrawMoneyReq withdraw) throws BankException;
 
 }

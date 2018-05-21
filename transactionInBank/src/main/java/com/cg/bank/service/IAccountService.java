@@ -17,14 +17,14 @@ public interface IAccountService {
 	 * AccountTransaction class description : this method will return a string if
 	 * successfully amount is added and add to transaction list
 	 */
-	String depositMoney(final AccountTransaction account) throws BankException;
+	Long depositMoney(final AccountTransaction account) throws BankException;
 
 	/**
 	 * method name : withdrawlMoney return type : String object parameter :object of
 	 * AccountTransaction class description : this method will return a string if
 	 * successfully withdraw and add to transaction list
 	 */
-	String withdrawlMoney(final AccountTransaction account) throws BankException;
+	Long withdrawlMoney(final AccountTransaction account) throws BankException;
 
 	/**
 	 * method name : getAccountDetails return type : Account object parameter :Long

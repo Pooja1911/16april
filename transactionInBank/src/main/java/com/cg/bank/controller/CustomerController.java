@@ -26,7 +26,6 @@ public class CustomerController {
 	private ICustomerService customerService;
 	@Autowired
 	private IBankService bankService;
-	private String message = null;
 
 	/*
 	 * method name : createCustomer return type : responseEntitiy object parameter :
@@ -48,13 +47,13 @@ public class CustomerController {
 				try {
 					response = customerService.createCustomer(cust);
 				} catch (BankException e) {
-					message = e.getMessage();
+					String message = e.getMessage();
 					return new ResponseEntity<String>(message, HttpStatus.OK);
 				}
 			}
 			return new ResponseEntity<Customer>(response, HttpStatus.CREATED);
 		} catch (BankException e1) {
-			message = e1.getMessage();
+			String message = e1.getMessage();
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 
@@ -66,15 +65,15 @@ public class CustomerController {
 	 * specified id mapping : get
 	 */
 	@GetMapping("/getCustomerDetails/{id}")
-	public ResponseEntity<?> getCustomer(@PathVariable Long id) {
-		Customer cust;
+	public ResponseEntity<?> getCustomer(@PathVariable final Long id) {
+		final Customer cust;
 		try {
 			cust = customerService.getCustomerDetails(id);
 			return new ResponseEntity<Customer>(cust, HttpStatus.OK);
 		} catch (BankException e) {
-			message = e.getMessage();
-		}
+			String message = e.getMessage();
+		
 		return new ResponseEntity<String>(message, HttpStatus.OK);
 	}
-
+	}
 }
