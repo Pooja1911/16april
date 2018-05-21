@@ -108,6 +108,10 @@ public class Customer {
 		this.customerName = customerName;
 		this.pin = pin;
 	}
+
+	public Customer(String string, long l) {
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 }

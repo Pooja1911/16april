@@ -27,6 +27,35 @@ public class CustomerController {
 	@Autowired
 	private IBankService bankService;
 
+	
+	/**
+	 * @return the customerService
+	 */
+	public ICustomerService getCustomerService() {
+		return customerService;
+	}
+
+	/**
+	 * @param customerService the customerService to set
+	 */
+	public void setCustomerService(ICustomerService customerService) {
+		this.customerService = customerService;
+	}
+
+	/**
+	 * @return the bankService
+	 */
+	public IBankService getBankService() {
+		return bankService;
+	}
+
+	/**
+	 * @param bankService the bankService to set
+	 */
+	public void setBankService(IBankService bankService) {
+		this.bankService = bankService;
+	}
+
 	/*
 	 * method name : createCustomer return type : responseEntitiy object parameter :
 	 * object of CreateCustomerRequest class description : this method will return a

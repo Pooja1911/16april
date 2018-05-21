@@ -1,6 +1,7 @@
 package com.cg.bank.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.cg.bank.Exception.BankException;
 import com.cg.bank.entities.Transaction;
@@ -21,6 +22,6 @@ public interface ITransactionService {
 	 * method name : generateTransactionReport return type : List<Transaction>
 	 * Object description : this method will return a list which of transactions
 	 */
-	List<Transaction> generateTransactionReport() throws BankException;
+	List<Transaction> generateTransactionReport(Long accountId) throws BankException;
 
 }

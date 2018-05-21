@@ -10,17 +10,19 @@ import org.springframework.stereotype.Service;
 import com.cg.bank.Exception.BankException;
 import com.cg.bank.entities.Transaction;
 import com.cg.bank.repository.TransactionRepository;
-@Service("transactionService")
+@Service
 public class TransactionServiceImpl implements ITransactionService{
 	final Logger LOGGER = LoggerFactory.getLogger(TransactionServiceImpl.class);
 	@Autowired
 	private TransactionRepository transact;
+
 	@Override
 	public Transaction createTransaction(final Transaction trans) throws BankException {
-		final Transaction transaction =transact.save(trans);
-		if(transaction!=null)
+		
+		final Transaction newtransaction =transact.save(trans);
+		if(newtransaction!=null)
 		{
-		return transaction;
+		return newtransaction;
 		}
 		else
 		{
@@ -29,17 +31,13 @@ public class TransactionServiceImpl implements ITransactionService{
 	}
 
 	@Override
-	public List<Transaction> generateTransactionReport() throws BankException {
+	public List<Transaction> generateTransactionReport(Long accountId) throws BankException {
 		// TODO Auto-generated method stub
-		final List<Transaction> tran=transact.findAll();
-		if(tran.isEmpty())
-		{
-			throw new BankException("no list generated");
-		}
-		else
-		{
-		return tran;
-		}
+		System.out.println(">>>>>>>>"+accountId);
+		List<Transaction> transopt=transact.findAllByAccountId(accountId);
+		System.out.println(">>>>>>>>"+transopt);
+		
+		return transopt;
 	}
 
 }

@@ -27,7 +27,7 @@ public class AccountServiceImpl implements IAccountService {
 	@Autowired
 	private AccountRepository accountRepository;
 	@Autowired
-	private TransactionRepository trans;
+	private ITransactionService trans;
 	@Autowired
 	private ICustomerService customerService;
 	@Autowired
@@ -81,7 +81,7 @@ public class AccountServiceImpl implements IAccountService {
 			final Customer customer = customerService.getCustomerDetails(account.getCustomerId());
 			transaction.setCustomer(customer);
 			transaction.setTransactionType("credit");
-			trans.save(transaction);
+			trans.createTransaction(transaction);
 			LOGGER.info("AMOUNT IS ADDED");
 			return account.getCustomerId();
 		} else {
@@ -112,7 +112,7 @@ public class AccountServiceImpl implements IAccountService {
 			balance = account1.getAmount();
 			balance = balance.subtract(account.getAmount());
 			account1.setAmount(balance);
-			final Optional<Bank> bank = bankService.getBankDetailsByID(account.getAccountId());
+			final Optional<Bank> bank = bankService.getBankDetailsByID(account.getBankId());
 			if (bank.isPresent()) {
 				final Bank bank1 = bank.get();
 				bank1.setAmount(balance);
@@ -126,7 +126,7 @@ public class AccountServiceImpl implements IAccountService {
 				{
 				transaction.setCustomer(customer);
 				transaction.setTransactionType("debit");
-				trans.save(transaction);
+				trans.createTransaction(transaction);
 				LOGGER.info("amount is deducted");
 				return account.getCustomerId();
 				}
