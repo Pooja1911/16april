@@ -18,11 +18,14 @@ public class BankServiceImpl implements IBankService {
 	final Logger LOGGER = LoggerFactory.getLogger(BankServiceImpl.class);
 	@Autowired
 	private BankRepository bankRepository;
+	@Autowired
+	private IBankDenominationService bankDenoService;
 
 	@Override
 	public Bank createBank(final Bank bank) throws BankException {
 		final Bank bank1 = bankRepository.save(bank);
 		if (bank1 != null) {
+			bankDenoService.bankDenominationCreate(bank1.getBankId());
 			return bank1;
 		} else {
 			LOGGER.error("No bank is added");

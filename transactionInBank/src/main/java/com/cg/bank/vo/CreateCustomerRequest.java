@@ -40,5 +40,7 @@ public class CreateCustomerRequest {
 		this.customer = customer;
 		this.bankID = bankID;
 	}
-
+public CreateCustomerRequest() {
+	// TODO Auto-generated constructor stub
+}
 }

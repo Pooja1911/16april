@@ -32,6 +32,8 @@ public class AccountServiceImpl implements IAccountService {
 	private ICustomerService customerService;
 	@Autowired
 	private IBankService bankService;
+	@Autowired
+	private IBankDenominationService bankDenoService;
 	private BigDecimal balance;
 
 	/*
@@ -62,15 +64,21 @@ public class AccountServiceImpl implements IAccountService {
 		if (account.getAmount().compareTo(BigDecimal.ZERO) > 0) {
 		final Optional<Account> acc1 = accountRepository.findById(account.getAccountId());
 		if (acc1.isPresent()) {
+			
 			final Account acc = acc1.get();
 			balance = acc.getAmount();
 			balance = balance.add(account.getAmount());
 			acc.setAmount(balance);
 			final Optional<Bank> bank = bankService.getBankDetailsByID(account.getBankId());
 			if (bank.isPresent()) {
+
 				final Bank bank1 = bank.get();
 				bank1.setAmount(balance);
 				bankService.createBank(bank1);
+				bankDenoService.bankDenominationDeposit(account.getAmount(),account.getBankId());
+				System.out.println("In deposit"+account.getAmount());
+				System.out.println("In deposit");
+				
 			}else
 			{   LOGGER.error("no bank id present");
 				throw new BankException("no bank is present of given id");
@@ -114,6 +122,7 @@ public class AccountServiceImpl implements IAccountService {
 			account1.setAmount(balance);
 			final Optional<Bank> bank = bankService.getBankDetailsByID(account.getBankId());
 			if (bank.isPresent()) {
+				bankDenoService.bankDenominationWithdraw(account.getAmount(), account.getBankId());
 				final Bank bank1 = bank.get();
 				bank1.setAmount(balance);
 				bankService.createBank(bank1);
