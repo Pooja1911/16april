@@ -15,18 +15,21 @@ public class RefServcieImpl implements IRefServcie {
 @Autowired
 private RefMoneyRepository refRepo;
 	@Override
-	public boolean createDenomination(BigDecimal denomination) throws BankException {
+	public void createDenomination(List<BigDecimal> list) throws BankException{
+		for(BigDecimal denomination: list )
+		{
 		if(!refRepo.findById(denomination).isPresent())
 		{
 			RefMoney refMoney=new RefMoney();
 			refMoney.setDenomination(denomination);
 			refRepo.save(refMoney);
-			return true;
+			//return true;
 		}
 		else
 		{
 			throw new BankException("Denomination already exist!!!!");
 		}
+	}
 	}
 
 	@Override

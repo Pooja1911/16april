@@ -76,8 +76,6 @@ public class AccountServiceImpl implements IAccountService {
 				bank1.setAmount(balance);
 				bankService.createBank(bank1);
 				bankDenoService.bankDenominationDeposit(account.getAmount(),account.getBankId());
-				System.out.println("In deposit"+account.getAmount());
-				System.out.println("In deposit");
 				
 			}else
 			{   LOGGER.error("no bank id present");

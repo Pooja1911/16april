@@ -18,12 +18,13 @@ public interface IRefServcie {
 	 * @return
 	 * @throws BankException
 	 */
-	boolean createDenomination(BigDecimal denomination) throws BankException;
+	
 	/**
 	 * 
 	 * @return
 	 * @throws BankException
 	 */
 	List<RefMoney> returnAll() throws BankException;
+	void createDenomination(List<BigDecimal> list) throws BankException;
 
 }

@@ -41,6 +41,8 @@ public class ATMServiceImpl implements IATMService {
 	private ICustomerService customerService;
 	@Autowired
 	private TransactionRepository trans;
+	@Autowired
+	private IAtmDenoService atmDeno;
 
 	@Override
 	public ATM createATM(final ATM atm) throws BankException {
@@ -77,6 +79,7 @@ public class ATMServiceImpl implements IATMService {
 						bank.setAmount(bankAmount);
 						bankService.createBank(bank);
 						atmRepo.save(atm1);
+						atmDeno.atmDenominationDeposit(atmreq.getAmount(), atmreq.getAtmId()); 
 						LOGGER.info("amount is added to your account");
 						return "amount added";
 

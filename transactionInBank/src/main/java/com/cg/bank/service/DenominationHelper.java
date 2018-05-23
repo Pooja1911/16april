@@ -30,8 +30,7 @@ public class DenominationHelper {
 					remainder= remainder.remainder( randomElement);			
 					
 					newMap.put(randomElement,count);
-					System.out.println(">>>>>>"+randomElement);
-					System.out.println(">>>>>>>>>>>>>>>>>"+count);
+				
 					if (remainder.compareTo(BigDecimal.ZERO) ==0) {
 						break;
 					}
@@ -45,7 +44,6 @@ public class DenominationHelper {
 			}
 			
 		}
-		System.out.println("result >>>>>>"+newMap);
 		return newMap;
 	}
 

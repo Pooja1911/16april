@@ -1,5 +1,7 @@
 package com.cg.bank.entities;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,7 +14,7 @@ public class ATMDenomination {
 	private Long ATMId;
 	@Id
 	@Column(name="denomination")
-	private int denomination;
+	private BigDecimal denomination;
 	@Column(name="noofdenomination")
 	private int noofDenomination;
 	/**
@@ -30,13 +32,13 @@ public class ATMDenomination {
 	/**
 	 * @return the denomination
 	 */
-	public int getDenomination() {
+	public BigDecimal getDenomination() {
 		return denomination;
 	}
 	/**
 	 * @param denomination the denomination to set
 	 */
-	public void setDenomination(int denomination) {
+	public void setDenomination(BigDecimal denomination) {
 		this.denomination = denomination;
 	}
 	/**
@@ -54,4 +56,16 @@ public class ATMDenomination {
 public ATMDenomination() {
 	// TODO Auto-generated constructor stub
 }
+/**
+ * @param aTMId
+ * @param denomination
+ * @param noofDenomination
+ */
+public ATMDenomination(Long aTMId, BigDecimal denomination, int noofDenomination) {
+	ATMId = aTMId;
+	this.denomination = denomination;
+	this.noofDenomination = noofDenomination;
+}
+
+
 }
