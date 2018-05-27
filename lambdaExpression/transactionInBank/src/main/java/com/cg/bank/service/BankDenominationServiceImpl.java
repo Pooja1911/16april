@@ -68,7 +68,7 @@ public class BankDenominationServiceImpl implements IBankDenominationService {
 		    BigDecimal myValue = pair.getKey();
 		    Integer count=pair.getValue();	
 			System.out.println("key value"+myValue);
-			Optional<BankDenomination> deno=denominationRepo.findById(myValue);
+			Optional<BankDenomination> deno=denominationRepo.findBydenomination(myValue);
 			BankDenomination denomination=deno.get();
 		System.out.println("denomination"+denomination);
 		System.out.println("count value"+count);
@@ -104,7 +104,7 @@ public class BankDenominationServiceImpl implements IBankDenominationService {
 		    BigDecimal myValue = pair.getKey();
 		    Integer count=pair.getValue();	
 			
-			Optional<BankDenomination> deno=denominationRepo.findById(myValue);
+			Optional<BankDenomination> deno=denominationRepo.findBydenomination(myValue);
 			BankDenomination denomination=deno.get();
 		Bank bank=bankServcie.getBankDetailsByID(bankId).get();
 		denomination.setBankId(bankId);

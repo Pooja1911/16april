@@ -70,12 +70,12 @@ public class AtmDenoServiceImpl implements IAtmDenoService{
 		    BigDecimal myValue = pair.getKey();
 		    Integer count=pair.getValue();	
 			System.out.println("key value"+myValue);
-			Optional<ATMDenomination> deno=atmdenoRepository.findById(myValue);
+			Optional<ATMDenomination> deno=atmdenoRepository.findBydenomination(myValue);
 			ATMDenomination denomination=deno.get();
 		System.out.println("denomination"+denomination);
 		System.out.println("count value"+count);
-		ATM atm=atmRepo.findById(atmId).get();
-		BankDenomination bank=bankDeno.findById(myValue).get();
+		ATM atm=atmRepo.findByATMId(atmId).get();
+		BankDenomination bank=bankDeno.findBydenomination(myValue).get();
 		int newNum=bank.getNoOfDenomination()-count;
 		bank.setNoOfDenomination(newNum);
 		bankDeno.save(bank);

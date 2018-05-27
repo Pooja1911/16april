@@ -47,7 +47,7 @@ public class BankServiceImpl implements IBankService {
 	@Override
 	public Optional<Bank> getBankDetailsByID(final long ID) throws BankException {
 		// TODO Auto-generated method stub
-		final Optional<Bank> bank = bankRepository.findById(ID);
+		final Optional<Bank> bank = bankRepository.findBybankId(ID);
 		if (bank.isPresent()) {
 			return bank;
 		} else {

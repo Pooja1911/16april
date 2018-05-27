@@ -45,7 +45,7 @@ public class CustomerServiceImpl implements ICustomerService, Cloneable {
 	@Override
 	public Customer getCustomerDetails(final Long id) throws BankException {
 
-		final Customer customer = customerRepository.findById(id).get();
+		final Customer customer = customerRepository.findBycustomerId(id).get();
 		if (customer != null) {
 			return customer;
 		} else {
@@ -59,7 +59,7 @@ public class CustomerServiceImpl implements ICustomerService, Cloneable {
 	public Customer updateCustomer(final Long id, final String name, final String userId)
 			throws BankException, CloneNotSupportedException {
 		// TODO Auto-generated method stub
-		final Customer customer = customerRepository.findById(id).get();
+		final Customer customer = customerRepository.findBycustomerId(id).get();
 
 		Customer oldcustmer = customer.clone();
 

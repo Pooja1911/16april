@@ -18,19 +18,26 @@ import org.springframework.web.client.RestTemplate;
 
 import com.cg.bank.Exception.BankException;
 import com.cg.bank.entities.Bank;
-@DataJpaTest
+import com.cg.bank.service.BankServiceImpl;
+import com.cg.bank.service.IBankService;
+
 public class BankTest {
+	
+	IBankService bankService=new BankServiceImpl();
 
 	@Test
 	public void chkbankAdd() {
-		final RestTemplate restTemplate = new RestTemplate();
+		
+		Bank bank=new Bank(1L,)
+		/*final RestTemplate restTemplate = new RestTemplate();
 		final BigDecimal big = new BigDecimal(0);
 		final Bank bank = new Bank();
 		bank.setAmount(big);
 		// Bank bank1=new Bank(1L,big);
 		final String uri = "http://localhost:8080/bank/bankCreate";
 		final Bank ban = restTemplate.postForObject(uri, bank, Bank.class);
-		assertEquals(ban.getAmount(), bank.getAmount());
+		assertEquals(ban.getAmount(), bank.getAmount());*/
+		
 	}
 
 	@Test
