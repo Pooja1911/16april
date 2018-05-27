@@ -21,7 +21,7 @@ import javax.persistence.Table;
 
 @Table(name = "bank_details")
 @Entity
-public class Bank extends BaseEntity{
+public class Bank {
 
 	@Id
 	@SequenceGenerator(name = "bank_seq", initialValue = 1, allocationSize = 1)

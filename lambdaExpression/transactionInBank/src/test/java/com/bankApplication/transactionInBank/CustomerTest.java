@@ -1,4 +1,4 @@
-package com.bankApplication.transactionInBank;
+/*package com.bankApplication.transactionInBank;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -126,3 +126,4 @@ public class CustomerTest {
 	}
 
 }
+*/

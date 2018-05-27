@@ -9,94 +9,83 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
 import com.cg.bank.Exception.BankException;
 import com.cg.bank.entities.Bank;
 import com.cg.bank.service.BankServiceImpl;
 import com.cg.bank.service.IBankService;
-
+@RunWith(SpringRunner.class)
 public class BankTest {
 	
 	IBankService bankService=new BankServiceImpl();
-
-	@Test
-	public void chkbankAdd() {
-		
-		Bank bank=new Bank(1L,)
-		/*final RestTemplate restTemplate = new RestTemplate();
-		final BigDecimal big = new BigDecimal(0);
-		final Bank bank = new Bank();
-		bank.setAmount(big);
-		// Bank bank1=new Bank(1L,big);
-		final String uri = "http://localhost:8080/bank/bankCreate";
-		final Bank ban = restTemplate.postForObject(uri, bank, Bank.class);
-		assertEquals(ban.getAmount(), bank.getAmount());*/
-		
+	 Bank bank;
+	 BigDecimal big;
+	@Before
+	public void init()
+	{
+	 big = new BigDecimal(0);
+	 bank = new Bank(1L,big);
 	}
 
 	@Test
-	public void checkBankDetails() {
-		final RestTemplate restTemplate = new RestTemplate();
-		final String uri = "http://localhost:8080/bank/getBankDetails";
-		final BigDecimal big = new BigDecimal(0);
-		Bank bank1 = new Bank(1L, big);
-		final List<Bank> list1 = new ArrayList();
-		list1.add(bank1);
-		final ResponseEntity<Bank[]> response = restTemplate.getForEntity(uri, Bank[].class);
-    	Bank [] list = response.getBody();
-		assertNotEquals(list.length , 0);
+	public void chkbankAdd()throws BankException {
+		
+				//bank.setAmount(big);
+		Bank b1=bankService.createBank(bank);
+		System.out.println("bank"+b1);
+		assertEquals(b1,bank);
+		
+	
+		
+	}
+
+	@Test(expected=BankException.class)
+	public void checkBankDetails() throws BankException {
+		Bank bank=new Bank();
+		Bank bank1=bankService.createBank(bank);
+		assertEquals("No bank is Added",bank1);
+		
 	}
 	
-	@Test
-	public void bankDeominationDeposit() throws BankException {
-		BigDecimal amount = new BigDecimal(2222);
-		Map<BigDecimal,Integer> newMap=new HashMap();
-		Random random = new Random();
-		List<BigDecimal> list = new ArrayList();
-		list.add(new BigDecimal(2000));
-		list.add(new BigDecimal(500));
-		list.add(new BigDecimal(200));
-		list.add(new BigDecimal(100));
-		BigDecimal remainder = amount;
-		if(amount.intValue()>=0)
-		{
-			for(int i=0;i<=list.size();i++)
-			{
-				Integer randomIndex = random.nextInt(list.size());
-				BigDecimal randomElement = list.get(randomIndex);
-				if ( !(randomElement.compareTo(remainder) >0) ) {
-					Integer count=remainder.divide(randomElement).intValue();
-					remainder= remainder.remainder( randomElement);			
-					
-					newMap.put(randomElement,count);
-					System.out.println(">>>>>>"+randomElement);
-					System.out.println(">>>>>>>>>>>>>>>>>"+count);
-					/*Optional<BankDenomination> deno = denominationRepo.findById(randomElement);
-					BankDenomination bankDeno = deno.get();
-						bankDeno.setNoOfDenomination(bankDeno.getNoOfDenomination() + count.intValue());
-						denominationRepo.save(bankDeno);*/
-					
-					if (remainder.compareTo(BigDecimal.ZERO) ==0) {
-						break;
-					}
-				}
-				list.remove(randomIndex);
-			
-			}
-			if (remainder.compareTo(BigDecimal.ZERO) !=0) {
-				System.out.println("cant Proceed ");
-				//return null;
-			}
-			
-		}
-		System.out.println("result >>>>>>"+newMap);
-		//return newMap;
-	}
+@Test
+public void checkgetById() throws BankException
+{
+
+	Optional<Bank> b1=bankService.getBankDetailsByID(1L);
+	final Bank bankopt=b1.get();
+	 assertEquals(bank,b1);
 	
+}
+@Test(expected=BankException.class)
+public void checkgetByID() throws BankException
+{
+	Optional<Bank> b1=bankService.getBankDetailsByID(1L);
+	assertEquals(b1,"No such bank found");
+}
+
+
+@Test
+public void checkforallbank() throws BankException
+{
+	List<Bank> list=bankService.getBankDetails();
+	assertEquals(list,bank);
+}
+
+@Test(expected=BankException.class)
+public void checkforAllbankException() throws BankException
+{
+	List<Bank> list=bankService.getBankDetails();
+	assertEquals(list,"no bank found");
+
+}
 }
