@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Table(name="Bank_Denm")
 @Entity
-public class BankDenomination {
+public class BankDenomination extends BaseEntity{
 	
 	@Id
 	@Column(name="denomination")

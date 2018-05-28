@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 @Table(name="ref_money")
 @Entity
-public class RefMoney {
+public class RefMoney extends BaseEntity {
 	@Id
 	private BigDecimal denomination;
 

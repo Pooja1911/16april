@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +42,7 @@ public class CustomerController {
 	public void setCustomerService(ICustomerService customerService) {
 		this.customerService = customerService;
 	}
+	
 
 	/**
 	 * @return the bankService
@@ -98,6 +100,19 @@ public class CustomerController {
 		final Customer cust;
 		try {
 			cust = customerService.getCustomerDetails(id);
+			return new ResponseEntity<Customer>(cust, HttpStatus.OK);
+		} catch (BankException e) {
+			String message = e.getMessage();
+		
+		return new ResponseEntity<String>(message, HttpStatus.OK);
+	}
+	}
+	
+	@PutMapping("/{id}/{name}/{userId}")
+	public ResponseEntity<?> updateCustomer(@PathVariable final Long id,@PathVariable final String name,@PathVariable final String userId) throws CloneNotSupportedException {
+		final Customer cust;
+		try {
+			cust = customerService.updateCustomer(id, name, userId);
 			return new ResponseEntity<Customer>(cust, HttpStatus.OK);
 		} catch (BankException e) {
 			String message = e.getMessage();

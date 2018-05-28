@@ -15,11 +15,10 @@ import javax.persistence.Table;
  */
 @Table(name = "customer_details")
 @Entity
-public class Customer {
+public class Customer extends BaseEntity implements Cloneable {
 
 	@Id
-	@SequenceGenerator(name = "customer_seq", initialValue = 1, allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_seq")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long customerId;
 	@Column(name = "customer_name")
@@ -112,6 +111,10 @@ public class Customer {
 	public Customer(String string, long l) {
 		// TODO Auto-generated constructor stub
 	}
-	
+	@Override
+	public Customer clone()throws CloneNotSupportedException{  
+		return (Customer)super.clone();  
+	   }
+		
 	
 }

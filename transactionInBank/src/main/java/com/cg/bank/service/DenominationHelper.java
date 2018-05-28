@@ -1,6 +1,8 @@
 package com.cg.bank.service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,11 +17,11 @@ import com.cg.bank.entities.RefMoney;
 @Component
 public class DenominationHelper {
 
-	public Map<BigDecimal, Integer> getDenominatioValues(BigDecimal amount , List<BigDecimal> list) throws BankException {
-		Map<BigDecimal,Integer> newMap=new HashMap();
+	public Map<BigDecimal, Integer> getDenominatioValues(final BigDecimal amount , final List<BigDecimal> list) throws BankException {
+		final Map<BigDecimal,Integer> newMap=new HashMap();
 		Random random = new Random();
 		BigDecimal remainder = amount;
-		if(amount.intValue()>=0)
+		if(amount.intValue()>=0) 
 		{
 			for(int i=0;i<=list.size();i++)
 			{
@@ -40,11 +42,42 @@ public class DenominationHelper {
 			}
 			if (remainder.compareTo(BigDecimal.ZERO) !=0) {
 				System.out.println("cant Proceed ");
-				return null;
+				return null ;
 			}
 			
 		}
 		return newMap;
 	}
 
+	
+	
+	public Map<BigDecimal,Integer> getcountDenomination(BigDecimal amount, List<BigDecimal> list) throws BankException
+	{
+		Map<BigDecimal, Integer> newMap = new HashMap();
+
+		List<BigDecimal> selectedList = new ArrayList();
+		for (BigDecimal denom : list) {
+			if (denom.compareTo(amount) <= 0) {
+				selectedList.add(denom);
+			} else {
+				throw new BankException("selected list is empty");
+			}
+		}
+		for (int i = 0; i <= selectedList.size(); i++) {
+			BigDecimal maxDen = Collections.max(selectedList);
+			Integer count = amount.divide(maxDen).intValue();
+			amount = amount.remainder(maxDen);
+			newMap.put(maxDen, count);
+
+			if (amount.compareTo(BigDecimal.ZERO) == 0) {
+				break;
+			}
+			selectedList.remove(maxDen);
+		}
+		// get index of particular element
+		if (amount.compareTo(BigDecimal.ZERO) != 0) {
+			throw new BankException("amount cannot be withdrawn");
+		}
+	return newMap;	
+	}
 }

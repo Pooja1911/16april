@@ -18,7 +18,7 @@ private RefMoneyRepository refRepo;
 	public void createDenomination(List<BigDecimal> list) throws BankException{
 		for(BigDecimal denomination: list )
 		{
-		if(!refRepo.findById(denomination).isPresent())
+		if(!refRepo.findBydenomination(denomination).isPresent())
 		{
 			RefMoney refMoney=new RefMoney();
 			refMoney.setDenomination(denomination);

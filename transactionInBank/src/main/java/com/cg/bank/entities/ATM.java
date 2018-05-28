@@ -12,13 +12,13 @@ import javax.persistence.Table;
 
 @Table(name = "atm_info")
 @Entity
-public class ATM {
+public class ATM extends BaseEntity {
 
 	@Id
-	@SequenceGenerator(name = "atm_seq", initialValue = 1, allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "atm_seq")
+
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "atm_id")
-	private Long ATMId;
+	private Long aTMId;
 	@Column(name = "amount")
 	private BigDecimal amount;
 	@Column(name = "id")
@@ -27,23 +27,27 @@ public class ATM {
 	/**
 	 * @return the aTMId
 	 */
-	public Long getATMId() {
-		return ATMId;
-	}
-
-	/**
-	 * @param aTMId
-	 *            the aTMId to set
-	 */
-	public void setATMId(final Long aTMId) {
-		ATMId = aTMId;
-	}
+	
 
 	/**
 	 * @return the amount
 	 */
 	public BigDecimal getAmount() {
 		return amount;
+	}
+
+	/**
+	 * @return the aTMId
+	 */
+	public Long getaTMId() {
+		return aTMId;
+	}
+
+	/**
+	 * @param aTMId the aTMId to set
+	 */
+	public void setaTMId(Long aTMId) {
+		this.aTMId = aTMId;
 	}
 
 	/**
@@ -80,7 +84,7 @@ public class ATM {
 	 */
 	@Override
 	public String toString() {
-		return "ATM [ATMId=" + ATMId + ", amount=" + amount + ", bankId=" + bankId + "]";
+		return "ATM [ATMId=" + aTMId + ", amount=" + amount + ", bankId=" + bankId + "]";
 	}
 
 }

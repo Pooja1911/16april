@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Table(name="Ref_ATM_Denm")
 @Entity
-public class ATMDenomination {
+public class ATMDenomination extends BaseEntity{
 	@Column(name="atm_id")
 	private Long ATMId;
 	@Id

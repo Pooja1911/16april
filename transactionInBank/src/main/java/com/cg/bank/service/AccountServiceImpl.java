@@ -62,7 +62,7 @@ public class AccountServiceImpl implements IAccountService {
 	@Override
 	public Long depositMoney(final AccountTransaction account) throws BankException {
 		if (account.getAmount().compareTo(BigDecimal.ZERO) > 0) {
-		final Optional<Account> acc1 = accountRepository.findById(account.getAccountId());
+		final Optional<Account> acc1 = accountRepository.findByaccountId(account.getAccountId());
 		if (acc1.isPresent()) {
 			
 			final Account acc = acc1.get();
@@ -112,7 +112,7 @@ public class AccountServiceImpl implements IAccountService {
 	public Long withdrawlMoney(final AccountTransaction account) throws BankException {
 		// TODO Auto-generated method stub
 		if (account.getAmount().compareTo(BigDecimal.ZERO) > 0) {
-		Optional<Account> acc1 = accountRepository.findById(account.getAccountId());
+		Optional<Account> acc1 = accountRepository.findByaccountId(account.getAccountId());
 		if (acc1.isPresent()) {
 			final Account account1 = acc1.get();                                                                     ;
 			balance = account1.getAmount();
@@ -166,7 +166,7 @@ public class AccountServiceImpl implements IAccountService {
 	@Override
 	public Account getAccountDetails(final Long id) throws BankException {
 		// TODO Auto-generated method stub
-		Account account =  accountRepository.findById(id).get();
+		Account account =  accountRepository.findByaccountId(id).get();
 		if (account != null) {
 			LOGGER.info("account retrived");
 			return account;

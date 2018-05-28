@@ -20,5 +20,10 @@ public interface ICustomerService {
 	 * :Long description : this method will return a customer of specified id
 	 */
 	Customer getCustomerDetails(final Long id) throws BankException;
-
+	/**
+	 * method name : updateCustomer return type : Customer object parameter
+	 * :Long,String description : this method will return a customer of specified idwith updation
+	 * @throws CloneNotSupportedException 
+	 */
+	Customer updateCustomer(final Long id,final String name, final String userId ) throws BankException, CloneNotSupportedException;
 }

@@ -16,10 +16,9 @@ import org.springframework.stereotype.Component;
 @Table(name = "transaction_details")
 @Entity
 @Component
-public class Transaction {
+public class Transaction extends BaseEntity{
 	@Id
-	@SequenceGenerator(name = "transaction_seq", initialValue = 1, allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transaction_seq")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "transaction_id")
 	private Long transactionId;
 	@Column(name = "amount")

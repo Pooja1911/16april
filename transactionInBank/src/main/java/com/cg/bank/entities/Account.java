@@ -13,11 +13,11 @@ import javax.persistence.Table;
 
 @Table(name = "account_details")
 @Entity
-public class Account {
+public class Account extends BaseEntity {
 
 	@Id
-	@SequenceGenerator(name = "account_seq", initialValue = 1, allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_seq")
+	
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "account_id")
 	private Long accountId;
 	@Column(name = "amount")

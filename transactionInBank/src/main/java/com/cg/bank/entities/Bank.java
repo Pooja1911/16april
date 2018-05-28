@@ -24,8 +24,7 @@ import javax.persistence.Table;
 public class Bank {
 
 	@Id
-	@SequenceGenerator(name = "bank_seq", initialValue = 1, allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bank_seq")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long bankId;
 

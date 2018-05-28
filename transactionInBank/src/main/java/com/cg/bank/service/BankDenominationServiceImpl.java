@@ -47,14 +47,38 @@ public class BankDenominationServiceImpl implements IBankDenominationService {
 	
 
 		
-	
+	 
 	}
 
 	
 
 	@Override
 	public void bankDenominationWithdraw(BigDecimal amount, Long bankId) throws BankException {
-      
+        List<RefMoney> newList=refService.returnAll();
+		List<BigDecimal> list = new ArrayList<>();
+		for(RefMoney deno:newList)
+		{
+			list.add(deno.getDenomination());
+		}
+		Map<BigDecimal, Integer> denomValues= denominationHelper.getcountDenomination(amount, list);
+		long i = 0;
+		Iterator<Map.Entry<BigDecimal, Integer>> it = denomValues.entrySet().iterator();
+		while (it.hasNext()) {
+		    Map.Entry<BigDecimal, Integer> pair = it.next();
+		    BigDecimal myValue = pair.getKey();
+		    Integer count=pair.getValue();	
+			System.out.println("key value"+myValue);
+			Optional<BankDenomination> deno=denominationRepo.findBydenomination(myValue);
+			BankDenomination denomination=deno.get();
+		System.out.println("denomination"+denomination);
+		System.out.println("count value"+count);
+		Bank bank=bankServcie.getBankDetailsByID(bankId).get();
+		denomination.setBankId(bankId);
+		denomination.setNoOfDenomination(denomination.getNoOfDenomination()-count);
+		denominationRepo.save(denomination);
+		
+		}
+		
 	}
 
 	@Override
@@ -79,11 +103,9 @@ public class BankDenominationServiceImpl implements IBankDenominationService {
 		    Map.Entry<BigDecimal, Integer> pair = it.next();
 		    BigDecimal myValue = pair.getKey();
 		    Integer count=pair.getValue();	
-			System.out.println("key value"+myValue);
-			Optional<BankDenomination> deno=denominationRepo.findById(myValue);
+			
+			Optional<BankDenomination> deno=denominationRepo.findBydenomination(myValue);
 			BankDenomination denomination=deno.get();
-		System.out.println("denomination"+denomination);
-		System.out.println("count value"+count);
 		Bank bank=bankServcie.getBankDetailsByID(bankId).get();
 		denomination.setBankId(bankId);
 		denomination.setNoOfDenomination(denomination.getNoOfDenomination()+count);

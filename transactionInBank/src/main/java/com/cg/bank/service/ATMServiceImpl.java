@@ -60,7 +60,7 @@ public class ATMServiceImpl implements IATMService {
 	@Override
 	public String addMoneyFromBank(final AddMoneyReq atmreq) throws BankException {
 		// TODO Auto-generated method stub
-		final Optional<ATM> atm = atmRepo.findById(atmreq.getAtmId());
+		final Optional<ATM> atm = atmRepo.findByATMId(atmreq.getAtmId());
 		if (atm.isPresent()) {
 			ATM atm1 = atm.get();
 			final Long bankID = atmreq.getBankId();
@@ -112,7 +112,7 @@ public class ATMServiceImpl implements IATMService {
     @Transactional
 	@Override
 	public Long withrawMoney(final WithrawMoneyReq withdraw) throws BankException {
-		final Optional<ATM> atm = atmRepo.findById(withdraw.getAtmId());
+		final Optional<ATM> atm = atmRepo.findByATMId(withdraw.getAtmId());
 		if (atm.isPresent()) {
 			final ATM atm1 = atm.get();
 			BigDecimal amount = atm1.getAmount();

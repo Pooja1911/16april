@@ -10,8 +10,8 @@ import java.util.Optional;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.cg.bank.Exception.BankException;
 import com.cg.bank.controller.CustomerController;
@@ -23,7 +23,7 @@ import com.cg.bank.service.IBankService;
 import com.cg.bank.service.ICustomerService;
 import com.cg.bank.vo.CreateCustomerRequest;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
 public class CustomerTest {
 	BigDecimal big;
 	Bank bank;
@@ -101,14 +101,11 @@ public class CustomerTest {
 		try {
 			when(bankService.getBankDetailsByID(cr.getBankID())).thenReturn(optBank);
 		} catch (BankException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		try {
 			when(customerServiceMok.createCustomer(customer)).thenReturn(customer);
 		} catch (BankException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
 		}
 		CustomerController CustomerContollerMock = new CustomerController();
 		CustomerContollerMock.setBankService(bankService);
@@ -118,8 +115,6 @@ public class CustomerTest {
 			when(customerServiceMok.getCustomerDetails(3L))
 					.thenThrow(new BankException("no customer of such id exist"));
 		} catch (BankException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		ResponseEntity<Customer> cust1 = (ResponseEntity<Customer>) CustomerContollerMock.getCustomer(3L);
 		assertEquals(cust1.getBody(), "no customer of such id exist");

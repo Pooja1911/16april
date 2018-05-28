@@ -1,12 +1,12 @@
-package com.bankApplication.transactionInBank;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
-public class TransactionInBankApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(TransactionInBankApplication.class, args);
-	}
-}
+//package com.bankApplication.transactionInBank;
+//
+//import org.springframework.boot.SpringApplication;
+//import org.springframework.boot.autoconfigure.SpringBootApplication;
+//
+//@SpringBootApplication
+//public class TransactionInBankApplication {
+//
+//	public static void main(String[] args) {
+//		SpringApplication.run(TransactionInBankApplication.class, args);
+//	}
+//}
