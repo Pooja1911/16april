@@ -17,6 +17,7 @@ public class TransactionInBankApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TransactionInBankApplication.class, args);
 	}
+
 	
 }
 

@@ -8,9 +8,9 @@ import org.springframework.web.client.RestTemplate;
 
 import com.cg.bank.entities.AuditLog;
 
-@FeignClient("mongo-client")
+@FeignClient("mongo-service")
 public interface IAuditService {
 
 	@PostMapping("/audit")
-	AuditLog createAudit(@RequestBody final AuditLog audit);
+	AuditLog createAudit( AuditLog audit);
 }
