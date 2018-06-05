@@ -13,7 +13,7 @@ import com.sec.security.pooja.spring.security.web.Service.MyUserDetails;
 import com.sec.security.pooja.spring.security.web.repository.UserRepository;
 
 @Configuration
-@EnableWebSecurity(debug=true)
+@EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
@@ -34,12 +34,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.csrf().disable();
-//		 http.authorizeRequests().antMatchers("/secured/**").authenticated().anyRequest().permitAll().and()
-//		 .authorizeRequests().antMatchers("/secured/**").access("hasRole('USER') or hasRole('ADMIN')").and()
-//		.authorizeRequests().antMatchers("/secured/**").hasAuthority("WRITE").and()
-//		 .formLogin().permitAll();
-		http.authorizeRequests().antMatchers("/secured/**").authenticated().anyRequest().hasAnyRole("ADMIN","USER")
-//		.and().authorizeRequests().antMatchers("/admin**").authenticated().anyRequest().hasAuthority("WRITE")
+		http.authorizeRequests().antMatchers("/secured/**")
+		.authenticated().anyRequest().permitAll()
 		.and().formLogin().permitAll();
 
 	}

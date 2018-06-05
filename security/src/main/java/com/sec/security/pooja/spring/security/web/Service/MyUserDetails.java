@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,15 +29,15 @@ public class MyUserDetails implements UserDetailsService {
 		Optional<User> optUser = userRepository.findByUserName(username);
 		optUser.orElseThrow(() -> new UsernameNotFoundException("no such user exist"));
 		return optUser.map(user -> new org.springframework.security.core.userdetails.User(user.getUserName(),
-				user.getPassword(), /* getAuthorities(user) */getAuthorities(user.getRoles()))).get();
+				user.getPassword(),  /*getAuthorities(user) */getAuthorities(user.getRoles()))).get();
 
 	}
-	/*
-	 * private Collection<? extends GrantedAuthority> getAuthorities(User user) {
-	 * 
-	 * return user.getRoles().stream().map(role -> new
-	 * SimpleGrantedAuthority("ROLE_" + role.getRole()))
-	 * .collect(Collectors.toList()); }
+	
+	 /* private Collection<? extends GrantedAuthority> getAuthorities(User user) {
+	  
+	  return user.getRoles().stream().map(role -> new
+	  SimpleGrantedAuthority("ROLE_" + role.getRole()))
+	  .collect(Collectors.toList()); }
 	 */
 
 	private Collection<? extends GrantedAuthority> getAuthorities(Collection<Role> roles) {
@@ -58,7 +59,7 @@ public class MyUserDetails implements UserDetailsService {
 	private List<GrantedAuthority> getGrantedAuthorities(List<String> privileges) {
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		for (String privilege : privileges) {
-			authorities.add(new SimpleGrantedAuthority(privilege));
+			authorities.add(new SimpleGrantedAuthority("ROLE_"+privilege));
 		}
 		//authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 		return authorities;
