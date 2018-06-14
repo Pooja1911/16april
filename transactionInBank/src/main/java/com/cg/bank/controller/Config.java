@@ -1,21 +1,48 @@
 package com.cg.bank.controller;
 
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.TopicExchange;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.client.RestTemplate;
 @Configuration
 public class Config {
 	
 	
 	
-	@Bean
+	/*@Bean
 	@LoadBalanced
 	RestTemplate restTemplate()
 	{
 		return new RestTemplate();
 	}
+	*/
 	
+	
+	
+		public static final String ROUTING_KEY="routing.key";
+		
+		
+		@Bean
+		Queue queue()
+		{
+			return new Queue(ROUTING_KEY, true);
+		}
+		
+		@Bean
+		TopicExchange exchange()
+		{
+			return new TopicExchange("topic_exchange");
+			
+		}
+		
+		@Bean
+		Binding binding(Queue queue, TopicExchange exchange)
+		{
+			return BindingBuilder.bind(queue).to(exchange).with(ROUTING_KEY);
+			
+		}
 	
 }
 
